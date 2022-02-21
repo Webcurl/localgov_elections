@@ -1,0 +1,22 @@
+entity.localgov_elections_candidate.settings:
+  title: Settings
+  route_name: entity.localgov_elections_candidate.settings
+  base_route: entity.localgov_elections_candidate.settings
+entity.localgov_elections_candidate.view:
+  title: View
+  route_name: entity.localgov_elections_candidate.canonical
+  base_route: entity.localgov_elections_candidate.canonical
+entity.localgov_elections_candidate.edit_form:
+  title: Edit
+  route_name: entity.localgov_elections_candidate.edit_form
+  base_route: entity.localgov_elections_candidate.canonical
+entity.localgov_elections_candidate.delete_form:
+  title: Delete
+  route_name: entity.localgov_elections_candidate.delete_form
+  base_route: entity.localgov_elections_candidate.canonical
+  weight: 10
+entity.localgov_elections_candidate.collection:
+  title: Elections Candidate
+  route_name: entity.localgov_elections_candidate.collection
+  base_route: system.admin_content
+  weight: 10

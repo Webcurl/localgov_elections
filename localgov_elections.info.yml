@@ -1,0 +1,7 @@
+name: Localgov Elections
+type: module
+description: 'Provides an elections candidate entity.'
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9
+configure: entity.localgov_elections_candidate.settings

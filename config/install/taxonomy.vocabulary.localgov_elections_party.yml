@@ -1,0 +1,8 @@
+uuid: c6d74597-5213-4c17-90a7-d369ffdab72a
+langcode: en
+status: true
+dependencies: {  }
+name: 'Localgov Elections Party'
+vid: localgov_elections_party
+description: ''
+weight: 0

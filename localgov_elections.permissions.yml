@@ -1,0 +1,13 @@
+administer elections candidate:
+  title: 'Administer elections candidate settings'
+  restrict access: true
+access elections candidate overview:
+  title: 'Access elections candidate overview page'
+delete elections candidate:
+  title: Delete elections candidate
+create elections candidate:
+  title: Create elections candidate
+view elections candidate:
+  title: View elections candidate
+edit elections candidate:
+  title: Edit elections candidate

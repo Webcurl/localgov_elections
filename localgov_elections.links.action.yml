@@ -1,0 +1,10 @@
+localgov_elections_candidate.add_form:
+  route_name: entity.localgov_elections_candidate.add_form
+  title: 'Add elections candidate'
+  appears_on:
+    - entity.localgov_elections_candidate.collection
+localgov_elections_contest.add_form:
+  route_name: entity.localgov_elections_contest.add_form
+  title: 'Add elections contest'
+  appears_on:
+    - entity.localgov_elections_contest.collection

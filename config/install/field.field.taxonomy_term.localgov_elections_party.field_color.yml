@@ -1,0 +1,19 @@
+uuid: 36c527d8-183d-4407-8c6e-bad5a82801ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_color
+    - taxonomy.vocabulary.localgov_elections_party
+id: taxonomy_term.localgov_elections_party.field_color
+field_name: field_color
+entity_type: taxonomy_term
+bundle: localgov_elections_party
+label: Color
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

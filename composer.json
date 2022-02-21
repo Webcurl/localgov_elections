@@ -1,0 +1,10 @@
+{
+    "name": "webcurl/localgov_elections",
+    "description": "Election results display",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "minimum-stability": "dev",
+    "require": {
+        "drupal/color_field": "^2.5"
+    }
+}

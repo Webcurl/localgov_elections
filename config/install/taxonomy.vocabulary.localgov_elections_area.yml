@@ -1,0 +1,8 @@
+uuid: ad4dbb91-3635-49b3-afe7-472eb0110aa6
+langcode: en
+status: true
+dependencies: {  }
+name: 'Localgov Elections Area'
+vid: localgov_elections_area
+description: ''
+weight: 0

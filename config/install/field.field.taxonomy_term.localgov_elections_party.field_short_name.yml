@@ -1,0 +1,19 @@
+uuid: 569c9b9c-133b-49ce-ae0f-ad7062509b50
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_short_name
+    - taxonomy.vocabulary.localgov_elections_party
+id: taxonomy_term.localgov_elections_party.field_short_name
+field_name: field_short_name
+entity_type: taxonomy_term
+bundle: localgov_elections_party
+label: 'Short Name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

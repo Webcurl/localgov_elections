@@ -1,0 +1,15 @@
+entity.localgov_elections_candidate.settings:
+  path: 'admin/structure/localgov-elections-candidate'
+  defaults:
+    _form: '\Drupal\localgov_elections\Form\ElectionsCandidateSettingsForm'
+    _title: 'Elections Candidate'
+  requirements:
+    _permission: 'administer elections candidate'
+
+entity.localgov_elections_contest.settings:
+  path: 'admin/structure/localgov-elections-contest'
+  defaults:
+    _form: '\Drupal\localgov_elections\Form\ElectionsContestSettingsForm'
+    _title: 'Elections Contest'
+  requirements:
+    _permission: 'administer elections contest'
