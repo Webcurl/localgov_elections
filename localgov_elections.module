@@ -5,7 +5,13 @@
  * Provides an elections candidate entity type.
  */
 
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Render\Element;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\localgov_elections\ElectionsExtraFieldDisplay;
+use Drupal\node\NodeInterface;
 
 /**
  * Implements hook_theme().
@@ -33,4 +39,55 @@ function template_preprocess_localgov_elections_candidate(array &$variables) {
   foreach (Element::children($variables['elements']) as $key) {
     $variables['content'][$key] = $variables['elements'][$key];
   }
+}
+
+
+/**
+ * Implements hook_entity_extra_field_info().
+ */
+function localgov_elections_entity_extra_field_info() {
+  return \Drupal::classResolver(ElectionsExtraFieldDisplay::class)
+    ->entityExtraFieldInfo();
+}
+
+/**
+ * @param array $build
+ * @param NodeInterface $node
+ * @param EntityViewDisplayInterface $display
+ * @param $view_mode
+ */
+function localgov_elections_node_view(array &$build, NodeInterface $node, EntityViewDisplayInterface $display, $view_mode) {
+  return \Drupal::classResolver(ElectionsExtraFieldDisplay::class)
+    ->nodeView($build, $node, $display, $view_mode);
+}
+
+
+/**
+ * Implements hook_jsonapi_ENTITY_TYPE_filter_access()
+ */
+function localgov_elections_jsonapi_localgov_elections_contest_filter_access(EntityTypeInterface $entity_type, AccountInterface $account) {
+  return [
+    JSONAPI_FILTER_AMONG_ALL => AccessResult::allowedIfHasPermission($account, 'view elections contest'),
+  ];
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_delete.
+ *
+ * Respond to election deleted.
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ */
+function localgov_elections_node_delete(Drupal\Core\Entity\EntityInterface $entity) {
+
+  if ($entity->bundle() != 'localgov_election') {
+    return;
+  }
+
+  $contest_ids = \Drupal::entityQuery('localgov_elections_contest')
+    ->condition('field_election', $entity->id())
+    ->execute();
+
+  $storage = \Drupal::entityTypeManager()->getStorage('localgov_elections_contest');
+  $storage->delete($storage->loadMultiple($contest_ids));
 }

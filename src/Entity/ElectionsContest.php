@@ -116,7 +116,11 @@ class ElectionsContest extends RevisionableContentEntityBase implements Election
 
   function preSave(EntityStorageInterface $storage) {
 
-    $label = $this->get('field_electoral_area')->getEntity()->label();
+    $label = 'Unknown Area';
+    if (!$this->get('field_electoral_area')->isEmpty()) {
+      $label = $this->get('field_electoral_area')->entity->label();
+    }
+
     $this->set('label', $label);
 
     parent::preSave($storage);

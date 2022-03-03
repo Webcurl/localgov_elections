@@ -4,7 +4,7 @@ entity.localgov_elections_candidate.settings:
     _form: '\Drupal\localgov_elections\Form\ElectionsCandidateSettingsForm'
     _title: 'Elections Candidate'
   requirements:
-    _permission: 'administer elections candidate'
+    _permission: 'administer elections'
 
 entity.localgov_elections_contest.settings:
   path: 'admin/structure/localgov-elections-contest'
@@ -12,4 +12,17 @@ entity.localgov_elections_contest.settings:
     _form: '\Drupal\localgov_elections\Form\ElectionsContestSettingsForm'
     _title: 'Elections Contest'
   requirements:
-    _permission: 'administer elections contest'
+    _permission: 'administer elections'
+
+localgov_elections.node.candidate_import_form:
+  path: /node/{node}/candidate_import
+  defaults:
+    _form: 'Drupal\localgov_elections\Form\ElectionsCandidateImport'
+  options:
+    _node_operation_route: TRUE
+    parameters:
+      node:
+        type: entity:node
+  requirements:
+    _permission: 'administer elections'
+    _content_type:  'localgov_election'

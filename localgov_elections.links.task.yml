@@ -20,3 +20,30 @@ entity.localgov_elections_candidate.collection:
   route_name: entity.localgov_elections_candidate.collection
   base_route: system.admin_content
   weight: 10
+entity.localgov_elections_contest.settings:
+  title: Settings
+  route_name: entity.localgov_elections_contest.settings
+  base_route: entity.localgov_elections_contest.settings
+entity.localgov_elections_contest.view:
+  title: View
+  route_name: entity.localgov_elections_contest.canonical
+  base_route: entity.localgov_elections_contest.canonical
+entity.localgov_elections_contest.edit_form:
+  title: Edit
+  route_name: entity.localgov_elections_contest.edit_form
+  base_route: entity.localgov_elections_contest.canonical
+entity.localgov_elections_contest.delete_form:
+  title: Delete
+  route_name: entity.localgov_elections_contest.delete_form
+  base_route: entity.localgov_elections_contest.canonical
+  weight: 10
+entity.localgov_elections_contest.collection:
+  title: Elections Contest
+  route_name: entity.localgov_elections_contest.collection
+  base_route: system.admin_content
+  weight: 10
+localgov_elections.candidate_import:
+  route_name: 'localgov_elections.node.candidate_import_form'
+  title: 'Import Candidates'
+  weight: 100
+  base_route: entity.node.canonical

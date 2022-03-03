@@ -78,6 +78,7 @@ class ElectionsContestListBuilder extends EntityListBuilder {
    * {@inheritdoc}
    */
   public function buildHeader() {
+    $header['election'] = $this->t('Election');
     $header['label'] = $this->t('Area');
     $header['created'] = $this->t('Created');
     $header['changed'] = $this->t('Updated');
@@ -89,6 +90,9 @@ class ElectionsContestListBuilder extends EntityListBuilder {
    */
   public function buildRow(EntityInterface $entity) {
     /* @var $entity \Drupal\localgov_elections\ElectionsContestInterface */
+
+    $election_name = $entity->get('field_election')->entity ? $entity->get('field_election')->entity->label() : "";
+    $row['election'] = $election_name;
     $row['label'] = $entity->label();
     $row['created'] = $this->dateFormatter->format($entity->getCreatedTime());
     $row['changed'] = $this->dateFormatter->format($entity->getChangedTime());
