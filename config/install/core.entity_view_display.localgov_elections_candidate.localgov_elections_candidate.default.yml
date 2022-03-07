@@ -1,0 +1,120 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.localgov_elections_candidate.localgov_elections_candidate.field_commonly_used_forenames
+    - field.field.localgov_elections_candidate.localgov_elections_candidate.field_commonly_used_surname
+    - field.field.localgov_elections_candidate.localgov_elections_candidate.field_contested
+    - field.field.localgov_elections_candidate.localgov_elections_candidate.field_elected
+    - field.field.localgov_elections_candidate.localgov_elections_candidate.field_forenames
+    - field.field.localgov_elections_candidate.localgov_elections_candidate.field_party
+    - field.field.localgov_elections_candidate.localgov_elections_candidate.field_party_name
+    - field.field.localgov_elections_candidate.localgov_elections_candidate.field_surname
+    - field.field.localgov_elections_candidate.localgov_elections_candidate.field_votes_won
+    - field.field.localgov_elections_candidate.localgov_elections_candidate.field_withdrawn
+  module:
+    - localgov_elections
+id: localgov_elections_candidate.localgov_elections_candidate.default
+targetEntityType: localgov_elections_candidate
+bundle: localgov_elections_candidate
+mode: default
+content:
+  created:
+    type: timestamp
+    label: above
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+    weight: 20
+    region: content
+  field_commonly_used_forenames:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 24
+    region: content
+  field_commonly_used_surname:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 25
+    region: content
+  field_contested:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 31
+    region: content
+  field_elected:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 28
+    region: content
+  field_forenames:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 22
+    region: content
+  field_party:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 21
+    region: content
+  field_party_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 29
+    region: content
+  field_surname:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 23
+    region: content
+  field_votes_won:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 27
+    region: content
+  field_withdrawn:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 30
+    region: content
+hidden:
+  search_api_excerpt: true

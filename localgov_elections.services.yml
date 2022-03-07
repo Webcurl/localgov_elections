@@ -3,3 +3,7 @@ services:
     class: Drupal\localgov_elections\Access\ContentTypeAccessCheck
     tags:
       - { name: access_check, applies_to: _content_type }
+  localgov_elections.elections_route_alter_subscriber:
+    class: Drupal\localgov_elections\EventSubscriber\ElectionsRouteAlterSubscriber
+    tags:
+      - { name: event_subscriber }

@@ -1,0 +1,113 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.localgov_elections_candidate.localgov_elections_candidate.field_commonly_used_forenames
+    - field.field.localgov_elections_candidate.localgov_elections_candidate.field_commonly_used_surname
+    - field.field.localgov_elections_candidate.localgov_elections_candidate.field_contested
+    - field.field.localgov_elections_candidate.localgov_elections_candidate.field_elected
+    - field.field.localgov_elections_candidate.localgov_elections_candidate.field_forenames
+    - field.field.localgov_elections_candidate.localgov_elections_candidate.field_party
+    - field.field.localgov_elections_candidate.localgov_elections_candidate.field_party_name
+    - field.field.localgov_elections_candidate.localgov_elections_candidate.field_surname
+    - field.field.localgov_elections_candidate.localgov_elections_candidate.field_votes_won
+    - field.field.localgov_elections_candidate.localgov_elections_candidate.field_withdrawn
+  module:
+    - field_layout
+    - layout_discovery
+    - localgov_elections
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+id: localgov_elections_candidate.localgov_elections_candidate.default
+targetEntityType: localgov_elections_candidate
+bundle: localgov_elections_candidate
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_commonly_used_forenames:
+    type: string_textfield
+    weight: 29
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_commonly_used_surname:
+    type: string_textfield
+    weight: 30
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_contested:
+    type: boolean_checkbox
+    weight: 36
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_elected:
+    type: boolean_checkbox
+    weight: 33
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_forenames:
+    type: string_textfield
+    weight: 27
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_party:
+    type: entity_reference_autocomplete
+    weight: 26
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_party_name:
+    type: string_textfield
+    weight: 34
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_surname:
+    type: string_textfield
+    weight: 28
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_votes_won:
+    type: number
+    weight: 32
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_withdrawn:
+    type: boolean_checkbox
+    weight: 35
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden: {  }

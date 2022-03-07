@@ -2,15 +2,14 @@ langcode: en
 status: true
 dependencies:
   module:
+    - localgov_elections
     - taxonomy
-id: taxonomy_term.field_abbreviated_name
-field_name: field_abbreviated_name
-entity_type: taxonomy_term
-type: string
+id: localgov_elections_contest.field_electoral_area
+field_name: field_electoral_area
+entity_type: localgov_elections_contest
+type: entity_reference
 settings:
-  max_length: 255
-  case_sensitive: false
-  is_ascii: false
+  target_type: taxonomy_term
 module: core
 locked: false
 cardinality: 1

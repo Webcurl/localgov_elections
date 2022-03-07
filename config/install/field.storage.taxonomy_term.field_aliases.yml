@@ -3,8 +3,8 @@ status: true
 dependencies:
   module:
     - taxonomy
-id: taxonomy_term.field_abbreviated_name
-field_name: field_abbreviated_name
+id: taxonomy_term.field_aliases
+field_name: field_aliases
 entity_type: taxonomy_term
 type: string
 settings:
@@ -13,7 +13,7 @@ settings:
   is_ascii: false
 module: core
 locked: false
-cardinality: 1
+cardinality: -1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

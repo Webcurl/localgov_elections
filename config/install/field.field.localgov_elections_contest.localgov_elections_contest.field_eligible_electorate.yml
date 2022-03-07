@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.localgov_elections_contest.field_eligible_electorate
+  module:
+    - localgov_elections
+id: localgov_elections_contest.localgov_elections_contest.field_eligible_electorate
+field_name: field_eligible_electorate
+entity_type: localgov_elections_contest
+bundle: localgov_elections_contest
+label: 'Eligible Electorate'
+description: 'Size of the eligible electorate in the electoral unit'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

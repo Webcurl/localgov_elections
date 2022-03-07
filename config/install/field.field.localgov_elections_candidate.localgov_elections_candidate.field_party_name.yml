@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.localgov_elections_candidate.field_party_name
+  module:
+    - localgov_elections
+id: localgov_elections_candidate.localgov_elections_candidate.field_party_name
+field_name: field_party_name
+entity_type: localgov_elections_candidate
+bundle: localgov_elections_candidate
+label: 'Party Name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

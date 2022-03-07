@@ -2,10 +2,10 @@ langcode: en
 status: true
 dependencies:
   module:
-    - taxonomy
-id: taxonomy_term.field_abbreviated_name
-field_name: field_abbreviated_name
-entity_type: taxonomy_term
+    - localgov_elections
+id: localgov_elections_candidate.field_surname
+field_name: field_surname
+entity_type: localgov_elections_candidate
 type: string
 settings:
   max_length: 255

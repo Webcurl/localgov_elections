@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.localgov_elections_candidate.field_contested
+  module:
+    - localgov_elections
+id: localgov_elections_candidate.localgov_elections_candidate.field_contested
+field_name: field_contested
+entity_type: localgov_elections_candidate
+bundle: localgov_elections_candidate
+label: Contested
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

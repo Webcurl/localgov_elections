@@ -1,0 +1,113 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.localgov_elections_contest.localgov_elections_contest.field_candidates
+    - field.field.localgov_elections_contest.localgov_elections_contest.field_election
+    - field.field.localgov_elections_contest.localgov_elections_contest.field_electoral_area
+    - field.field.localgov_elections_contest.localgov_elections_contest.field_eligible_electorate
+    - field.field.localgov_elections_contest.localgov_elections_contest.field_rejected_papers
+    - field.field.localgov_elections_contest.localgov_elections_contest.field_seats_contested
+    - field.field.localgov_elections_contest.localgov_elections_contest.field_seats_total
+    - field.field.localgov_elections_contest.localgov_elections_contest.field_turnout
+    - field.field.localgov_elections_contest.localgov_elections_contest.field_turnout_percentage
+  module:
+    - entity_browser_entity_form
+    - field_layout
+    - inline_entity_form
+    - layout_discovery
+    - localgov_elections
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+id: localgov_elections_contest.localgov_elections_contest.default
+targetEntityType: localgov_elections_contest
+bundle: localgov_elections_contest
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_candidates:
+    type: inline_entity_form_complex
+    weight: 29
+    region: content
+    settings:
+      form_mode: default
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+    third_party_settings:
+      entity_browser_entity_form:
+        entity_browser_id: _none
+  field_election:
+    type: entity_reference_autocomplete
+    weight: 30
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_electoral_area:
+    type: options_select
+    weight: 26
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_eligible_electorate:
+    type: number
+    weight: 28
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_rejected_papers:
+    type: number
+    weight: 35
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_seats_contested:
+    type: number
+    weight: 33
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_seats_total:
+    type: number
+    weight: 34
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_turnout:
+    type: number
+    weight: 31
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_turnout_percentage:
+    type: number
+    weight: 32
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.localgov_elections_contest.field_candidates
+  module:
+    - entity_reference_revisions
+    - localgov_elections
+id: localgov_elections_contest.localgov_elections_contest.field_candidates
+field_name: field_candidates
+entity_type: localgov_elections_contest
+bundle: localgov_elections_contest
+label: Candidates
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:localgov_elections_candidate'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+field_type: entity_reference_revisions

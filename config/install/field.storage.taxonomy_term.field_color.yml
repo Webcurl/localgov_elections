@@ -1,18 +1,16 @@
-uuid: 079f5b85-5b41-4175-bc37-50e06af8a97b
 langcode: en
 status: true
 dependencies:
   module:
+    - color_field
     - taxonomy
 id: taxonomy_term.field_color
 field_name: field_color
 entity_type: taxonomy_term
-type: string
+type: color_field_type
 settings:
-  max_length: 255
-  is_ascii: false
-  case_sensitive: false
-module: core
+  format: '#HEXHEX'
+module: color_field
 locked: false
 cardinality: 1
 translatable: true

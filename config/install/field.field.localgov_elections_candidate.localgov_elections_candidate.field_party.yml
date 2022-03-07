@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.localgov_elections_candidate.field_party
+    - taxonomy.vocabulary.localgov_elections_party
+  module:
+    - localgov_elections
+id: localgov_elections_candidate.localgov_elections_candidate.field_party
+field_name: field_party
+entity_type: localgov_elections_candidate
+bundle: localgov_elections_candidate
+label: Party
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      localgov_elections_party: localgov_elections_party
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

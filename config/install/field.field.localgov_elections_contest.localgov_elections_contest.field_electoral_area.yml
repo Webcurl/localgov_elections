@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.localgov_elections_contest.field_electoral_area
+    - taxonomy.vocabulary.localgov_elections_area
+  module:
+    - localgov_elections
+id: localgov_elections_contest.localgov_elections_contest.field_electoral_area
+field_name: field_electoral_area
+entity_type: localgov_elections_contest
+bundle: localgov_elections_contest
+label: 'Electoral Area'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      localgov_elections_area: localgov_elections_area
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

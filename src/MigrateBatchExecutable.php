@@ -8,7 +8,6 @@ namespace Drupal\localgov_elections;
 
 use Drupal\migrate\MigrateMessageInterface;
 use Drupal\migrate\Plugin\MigrationInterface;
-use Drupal\migrate_source_ui\StubMigrationMessage;
 use Drupal\migrate_tools\MigrateBatchExecutable as BaseMigrateBatchExecutable;
 
 /**

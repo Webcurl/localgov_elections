@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.localgov_elections_contest.field_turnout_percentage
+  module:
+    - localgov_elections
+id: localgov_elections_contest.localgov_elections_contest.field_turnout_percentage
+field_name: field_turnout_percentage
+entity_type: localgov_elections_contest
+bundle: localgov_elections_contest
+label: 'Turnout Percentage'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: !!float 0
+  max: !!float 100
+  prefix: ''
+  suffix: '%'
+field_type: decimal

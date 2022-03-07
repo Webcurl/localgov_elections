@@ -2,15 +2,14 @@ langcode: en
 status: true
 dependencies:
   module:
-    - taxonomy
-id: taxonomy_term.field_short_name
-field_name: field_short_name
-entity_type: taxonomy_term
-type: string
+    - localgov_elections
+id: localgov_elections_contest.field_turnout
+field_name: field_turnout
+entity_type: localgov_elections_contest
+type: integer
 settings:
-  max_length: 255
-  case_sensitive: false
-  is_ascii: false
+  unsigned: false
+  size: normal
 module: core
 locked: false
 cardinality: 1
