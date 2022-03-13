@@ -19,6 +19,7 @@ use Drupal\localgov_elections\ElectionsCandidateInterface;
  *   handlers = {
  *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
  *     "list_builder" = "Drupal\localgov_elections\ElectionsCandidateListBuilder",
+ *     "inline_form" = "Drupal\localgov_elections\ElectionsCandidateInlineForm",
  *     "views_data" = "Drupal\views\EntityViewsData",
  *     "access" = "Drupal\localgov_elections\ElectionsCandidateAccessControlHandler",
  *     "form" = {
@@ -28,7 +29,7 @@ use Drupal\localgov_elections\ElectionsCandidateInterface;
  *     },
  *     "route_provider" = {
  *       "html" = "Drupal\Core\Entity\Routing\AdminHtmlRouteProvider",
- *     }
+ *     },
  *   },
  *   base_table = "localgov_elections_candidate",
  *   revision_table = "localgov_elections_candidate_revision",
