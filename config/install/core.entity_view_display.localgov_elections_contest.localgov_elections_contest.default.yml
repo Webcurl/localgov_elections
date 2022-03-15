@@ -6,6 +6,7 @@ dependencies:
     - field.field.localgov_elections_contest.localgov_elections_contest.field_election
     - field.field.localgov_elections_contest.localgov_elections_contest.field_electoral_area
     - field.field.localgov_elections_contest.localgov_elections_contest.field_eligible_electorate
+    - field.field.localgov_elections_contest.localgov_elections_contest.field_previous_seats
     - field.field.localgov_elections_contest.localgov_elections_contest.field_rejected_papers
     - field.field.localgov_elections_contest.localgov_elections_contest.field_seats_contested
     - field.field.localgov_elections_contest.localgov_elections_contest.field_seats_total
@@ -62,6 +63,14 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     weight: 23
+    region: content
+  field_previous_seats:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 31
     region: content
   field_rejected_papers:
     type: number_integer

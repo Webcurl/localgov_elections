@@ -26,15 +26,9 @@ targetEntityType: localgov_elections_candidate
 bundle: localgov_elections_candidate
 mode: default
 content:
-  created:
-    type: datetime_timestamp
-    weight: 20
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_commonly_used_forenames:
     type: string_textfield
-    weight: 29
+    weight: 4
     region: content
     settings:
       size: 60
@@ -42,7 +36,7 @@ content:
     third_party_settings: {  }
   field_commonly_used_surname:
     type: string_textfield
-    weight: 30
+    weight: 5
     region: content
     settings:
       size: 60
@@ -50,21 +44,21 @@ content:
     third_party_settings: {  }
   field_contested:
     type: boolean_checkbox
-    weight: 36
+    weight: 9
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_elected:
     type: boolean_checkbox
-    weight: 33
+    weight: 7
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_forenames:
     type: string_textfield
-    weight: 27
+    weight: 2
     region: content
     settings:
       size: 60
@@ -72,7 +66,7 @@ content:
     third_party_settings: {  }
   field_party:
     type: entity_reference_autocomplete
-    weight: 26
+    weight: 1
     region: content
     settings:
       match_operator: CONTAINS
@@ -82,7 +76,7 @@ content:
     third_party_settings: {  }
   field_party_name:
     type: string_textfield
-    weight: 34
+    weight: 0
     region: content
     settings:
       size: 60
@@ -90,7 +84,7 @@ content:
     third_party_settings: {  }
   field_surname:
     type: string_textfield
-    weight: 28
+    weight: 3
     region: content
     settings:
       size: 60
@@ -98,16 +92,17 @@ content:
     third_party_settings: {  }
   field_votes_won:
     type: number
-    weight: 32
+    weight: 6
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   field_withdrawn:
     type: boolean_checkbox
-    weight: 35
+    weight: 8
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  created: true

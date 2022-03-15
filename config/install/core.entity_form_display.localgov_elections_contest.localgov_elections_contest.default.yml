@@ -6,6 +6,7 @@ dependencies:
     - field.field.localgov_elections_contest.localgov_elections_contest.field_election
     - field.field.localgov_elections_contest.localgov_elections_contest.field_electoral_area
     - field.field.localgov_elections_contest.localgov_elections_contest.field_eligible_electorate
+    - field.field.localgov_elections_contest.localgov_elections_contest.field_previous_seats
     - field.field.localgov_elections_contest.localgov_elections_contest.field_rejected_papers
     - field.field.localgov_elections_contest.localgov_elections_contest.field_seats_contested
     - field.field.localgov_elections_contest.localgov_elections_contest.field_seats_total
@@ -13,6 +14,7 @@ dependencies:
     - field.field.localgov_elections_contest.localgov_elections_contest.field_turnout_percentage
   module:
     - entity_browser_entity_form
+    - field_group
     - field_layout
     - inline_entity_form
     - layout_discovery
@@ -22,20 +24,33 @@ third_party_settings:
     id: layout_onecol
     settings:
       label: ''
+  field_group:
+    group_test:
+      children:
+        - field_eligible_electorate
+        - field_turnout
+        - field_turnout_percentage
+      label: 'Electorate / Turnout'
+      region: content
+      parent_name: ''
+      weight: 6
+      format_type: details_sidebar
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: true
+        description: ''
+        required_fields: true
+        weight: 0
 id: localgov_elections_contest.localgov_elections_contest.default
 targetEntityType: localgov_elections_contest
 bundle: localgov_elections_contest
 mode: default
 content:
-  created:
-    type: datetime_timestamp
-    weight: 20
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_candidates:
     type: inline_entity_form_complex
-    weight: 29
+    weight: 1
     region: content
     settings:
       form_mode: default
@@ -54,7 +69,7 @@ content:
         entity_browser_id: _none
   field_election:
     type: entity_reference_autocomplete
-    weight: 30
+    weight: 2
     region: content
     settings:
       match_operator: CONTAINS
@@ -64,50 +79,61 @@ content:
     third_party_settings: {  }
   field_electoral_area:
     type: options_select
-    weight: 26
+    weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
   field_eligible_electorate:
     type: number
-    weight: 28
+    weight: 1
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
+  field_previous_seats:
+    type: entity_reference_autocomplete
+    weight: 7
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_rejected_papers:
     type: number
-    weight: 35
+    weight: 5
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   field_seats_contested:
     type: number
-    weight: 33
+    weight: 3
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   field_seats_total:
     type: number
-    weight: 34
+    weight: 4
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   field_turnout:
     type: number
-    weight: 31
+    weight: 2
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   field_turnout_percentage:
     type: number
-    weight: 32
+    weight: 3
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  created: true
