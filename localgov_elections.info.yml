@@ -1,9 +1,11 @@
 name: Localgov Elections
 type: module
-description: 'Provides an elections candidate entity.'
+description: 'Display elections candidates and results'
 package: Custom
 core: 8.x
 core_version_requirement: ^8 || ^9
 configure: entity.localgov_elections_candidate.settings
 dependencies:
   - color_field:color_field
+  - inline_entity_form:inline_entity_form
+  - drupal:content_moderation
