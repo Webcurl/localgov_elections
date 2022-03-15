@@ -117,16 +117,18 @@ class ElectionsCandidate extends RevisionableContentEntityBase implements Electi
 
 
   function preSave(EntityStorageInterface $storage) {
+    $this->updateLabel();
 
+    parent::preSave($storage);
+  }
+
+  public function updateLabel() {
     $label = implode(", ", [
       $this->get('field_surname')->getString(),
       $this->get('field_forenames')->getString()
     ]);
 
     $this->set('label', $label);
-
-    parent::preSave($storage);
   }
-
 
 }
