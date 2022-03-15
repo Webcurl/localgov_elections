@@ -19,6 +19,9 @@ class ElectionsRouteAlterSubscriber implements EventSubscriberInterface {
 
     if ($route = $routes->get('view.localgov_elections_contests.page_1')) {
       $route->setOption('_admin_route', TRUE);
+
+      // Ensure admin tab only displays on election pages.
+      $route->addRequirements(['_content_type' => 'localgov_election']);
     }
   }
 }
