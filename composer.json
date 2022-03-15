@@ -8,6 +8,7 @@
         "drupal/color_field": "^2.5",
         "drupal/inline_entity_form": "^1.0@RC",
         "drupal/migrate_process_regex": "^2.0",
+        "drupal/prepopulate": "^2.3",
         "drupal/views_linkarea": "^1.3"
     }
 }

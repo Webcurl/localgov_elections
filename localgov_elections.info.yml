@@ -9,6 +9,7 @@ dependencies:
   - color_field:color_field
   - inline_entity_form:inline_entity_form
   - drupal:content_moderation
+  - prepopulate:prepopulate
   - views_linkarea:views_linkarea
 config_devel:
   - core.entity_form_display.localgov_elections_candidate.localgov_elections_candidate.default
