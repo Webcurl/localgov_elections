@@ -3,11 +3,6 @@ entity.localgov_elections_candidate.settings:
   description: Configure an Elections Candidate entity type
   route_name:  entity.localgov_elections_candidate.settings
   parent: system.admin_structure
-entity.localgov_elections_candidate.collection:
-  title: Elections Candidates
-  description: List of elections candidates
-  route_name: entity.localgov_elections_candidate.collection
-  parent: system.admin_content
 entity.localgov_elections_contest.settings:
   title: Elections Contest
   description: Configure an Elections Contest entity type

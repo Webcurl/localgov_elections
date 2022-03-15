@@ -1,14 +1,14 @@
 <?php
 
-namespace Drupal\localgov_elections\Form;
+namespace Drupal\localgov_elections_import\Form;
 
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\localgov_elections\MigrateBatchExecutable;
+use Drupal\localgov_elections_import\MigrateBatchExecutable;
 use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\Plugin\MigrationPluginManager;
-use Drupal\localgov_elections\StubMigrationMessage;
+use Drupal\localgov_elections_import\StubMigrationMessage;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class ElectionsCandidateImport extends FormBase {

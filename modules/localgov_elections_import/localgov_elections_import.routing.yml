@@ -1,0 +1,12 @@
+localgov_elections_import.node.candidate_import_form:
+  path: /node/{node}/candidate_import
+  defaults:
+    _form: 'Drupal\localgov_elections_import\Form\ElectionsCandidateImport'
+  options:
+    _node_operation_route: TRUE
+    parameters:
+      node:
+        type: entity:node
+  requirements:
+    _permission: 'administer elections'
+    _content_type:  'localgov_election'

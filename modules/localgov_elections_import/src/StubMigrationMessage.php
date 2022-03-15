@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\localgov_elections;
+namespace Drupal\localgov_elections_import;
 
 use Drupal\Core\Messenger\MessengerTrait;
 use Drupal\migrate\MigrateMessageInterface;

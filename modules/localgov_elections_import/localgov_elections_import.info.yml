@@ -1,0 +1,10 @@
+name: Localgov Elections Importer
+type: module
+description: 'Import candidates'
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - migrate_plus:migrate_plus
+  - migrate_process_regex:migrate_process_regex
+  - localgov_elections

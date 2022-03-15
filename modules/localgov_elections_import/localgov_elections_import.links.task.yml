@@ -1,0 +1,5 @@
+localgov_elections_import.candidate_import:
+  route_name: 'localgov_elections_import.node.candidate_import_form'
+  title: 'Import Candidates'
+  weight: 100
+  base_route: entity.node.canonical

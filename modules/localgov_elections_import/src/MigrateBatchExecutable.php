@@ -4,7 +4,7 @@
  * Borrowed from migrate_source_ui module.
  */
 
-namespace Drupal\localgov_elections;
+namespace Drupal\localgov_elections_import;
 
 use Drupal\migrate\MigrateMessageInterface;
 use Drupal\migrate\Plugin\MigrationInterface;
