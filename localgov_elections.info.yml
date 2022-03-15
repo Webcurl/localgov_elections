@@ -75,7 +75,9 @@ config_devel:
   - field.storage.taxonomy_term.field_color
   - field.storage.taxonomy_term.field_short_name
   - node.type.localgov_election
+  - pathauto.pattern.localgov_elections_election
   - taxonomy.vocabulary.localgov_elections_area
   - taxonomy.vocabulary.localgov_elections_party
   - views.view.election_winners
   - views.view.localgov_elections_contests
+  - workflows.workflow.localgov_elections_contests

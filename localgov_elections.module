@@ -101,6 +101,7 @@ function localgov_elections_gin_content_form_routes() {
   return [
     'entity.localgov_elections_candidate.edit_form',
     'entity.localgov_elections_contest.edit_form',
+    'entity.localgov_elections_contest.add_form',
   ];
 }
 

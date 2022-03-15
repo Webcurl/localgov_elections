@@ -10,6 +10,7 @@ dependencies:
     - content_moderation
     - localgov_elections
     - user
+    - views_linkarea
 id: localgov_elections_contests
 label: 'Election Contests'
 module: views
@@ -499,7 +500,34 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
-      header: {  }
+      header:
+        linkarea:
+          id: linkarea
+          table: views
+          field: linkarea
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: linkarea
+          empty: false
+          tokenize: true
+          link_text: 'Add Contest'
+          path: 'route:entity.localgov_elections_contest.add_form?edit[field_election][widget][0][target_id]={{ arguments.field_election_target_id }}'
+          output_as_action: false
+          destination: true
+          external: false
+          replace_spaces: false
+          absolute: false
+          path_case: none
+          alt: ''
+          rel: ''
+          link_class: ''
+          prefix: ''
+          suffix: ''
+          target: ''
+          rewrite_output: ''
+          access_denied_text: ''
+          language: '**auto**'
       footer: {  }
       display_extenders: {  }
     cache_metadata:

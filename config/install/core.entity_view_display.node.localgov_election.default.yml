@@ -61,4 +61,5 @@ content:
     weight: -20
     region: content
 hidden:
+  langcode: true
   search_api_excerpt: true

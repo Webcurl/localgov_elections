@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: localgov_elections_election
+label: Election
+type: 'canonical_entities:node'
+pattern: '/elections/[node:field_election_date:date:custom:M-y]'
+selection_criteria: {  }
+selection_logic: and
+weight: 0
+relationships: {  }
