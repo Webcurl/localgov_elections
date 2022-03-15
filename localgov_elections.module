@@ -7,6 +7,7 @@
 
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Session\AccountInterface;
@@ -90,4 +91,34 @@ function localgov_elections_node_delete(Drupal\Core\Entity\EntityInterface $enti
 
   $storage = \Drupal::entityTypeManager()->getStorage('localgov_elections_contest');
   $storage->delete($storage->loadMultiple($contest_ids));
+}
+
+/**
+ * Implements hook_gin_content_form_routes().
+ * @return string[]
+ */
+function localgov_elections_gin_content_form_routes() {
+  return [
+    'entity.localgov_elections_candidate.edit_form',
+    'entity.localgov_elections_contest.edit_form',
+  ];
+}
+
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function localgov_elections_form_localgov_elections_contest_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  $form_object = $form_state->getFormObject();
+
+  if ($form_object instanceof EntityForm) {
+    $entity = $form_object->getEntity();
+    if (!$entity->isNew()) {
+      // Hide election / electoral area fields on existing contests.
+      $form['field_election']['#access'] = FALSE;
+      $form['field_electoral_area']['#access'] = FALSE;
+    }
+  }
+
 }

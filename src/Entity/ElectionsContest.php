@@ -46,11 +46,11 @@ use Drupal\localgov_elections\ElectionsContestInterface;
  *     "revision_user" = "revision_user"
  *   },
  *   links = {
- *     "add-form" = "/admin/content/localgov-elections-contest/add",
+ *     "add-form" = "/admin/localgov-elections/contest/add",
  *     "canonical" = "/localgov_elections_contest/{localgov_elections_contest}",
- *     "edit-form" = "/admin/content/localgov-elections-contest/{localgov_elections_contest}/edit",
- *     "delete-form" = "/admin/content/localgov-elections-contest/{localgov_elections_contest}/delete",
- *     "collection" = "/admin/content/localgov-elections-contest"
+ *     "edit-form" = "/admin/localgov-elections/contest/{localgov_elections_contest}/edit",
+ *     "delete-form" = "/admin/localgov-elections/contest/{localgov_elections_contest}/delete",
+ *     "collection" = "/admin/localgov-elections/contest"
  *   },
  *   field_ui_base_route = "entity.localgov_elections_contest.settings"
  * )

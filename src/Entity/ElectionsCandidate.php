@@ -51,7 +51,7 @@ use Drupal\localgov_elections\ElectionsCandidateInterface;
  *     "canonical" = "/localgov_elections_candidate/{localgov_elections_candidate}",
  *     "edit-form" = "/admin/content/localgov-elections-candidate/{localgov_elections_candidate}/edit",
  *     "delete-form" = "/admin/content/localgov-elections-candidate/{localgov_elections_candidate}/delete",
- *     "collection" = "/admin/content/localgov-elections-candidate"
+ *     "collection" = "/admin/structure/localgov-elections-candidate/list"
  *   },
  *   field_ui_base_route = "entity.localgov_elections_candidate.settings"
  * )
