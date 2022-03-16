@@ -10,5 +10,13 @@
         "drupal/migrate_process_regex": "^2.0",
         "drupal/prepopulate": "^2.3",
         "drupal/views_linkarea": "^1.3"
+    },
+    "extra": {
+        "enable-patching": true,
+        "patches": {
+            "drupal/entity_reference_revisions": {
+                "Provide correctly working reverse relationship in Views. See https://www.drupal.org/project/entity_reference_revisions/issues/2799479": "https://git.drupalcode.org/project/entity_reference_revisions/-/merge_requests/5.patch"
+            }
+        }
     }
 }
