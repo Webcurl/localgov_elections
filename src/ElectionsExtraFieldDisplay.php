@@ -14,7 +14,7 @@ class ElectionsExtraFieldDisplay {
   /**
    * Gets the "extra fields" for a bundle.
    *
-   * @see localgov_news_entity_extra_field_info()
+   * @see localgov_elections_entity_extra_field_info()
    */
   public function entityExtraFieldInfo() {
 
