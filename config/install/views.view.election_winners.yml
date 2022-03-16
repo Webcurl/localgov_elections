@@ -289,7 +289,7 @@ display:
           id: field_electoral_area
           table: localgov_elections_contest__field_electoral_area
           field: field_electoral_area
-          relationship: reverse__localgov_elections_contest__field_candidates
+          relationship: reverse__localgov_elections_contest__field_candidates_1
           group_type: group
           admin_label: ''
           plugin_id: field
@@ -374,7 +374,7 @@ display:
           id: field_electoral_area_target_id
           table: localgov_elections_contest__field_electoral_area
           field: field_electoral_area_target_id
-          relationship: reverse__localgov_elections_contest__field_candidates
+          relationship: reverse__localgov_elections_contest__field_candidates_1
           group_type: group
           admin_label: ''
           plugin_id: standard
@@ -401,7 +401,7 @@ display:
           id: field_election_target_id
           table: localgov_elections_contest__field_election
           field: field_election_target_id
-          relationship: reverse__localgov_elections_contest__field_candidates
+          relationship: reverse__localgov_elections_contest__field_candidates_1
           group_type: group
           admin_label: ''
           plugin_id: numeric
@@ -527,16 +527,6 @@ display:
           replica: false
           query_tags: {  }
       relationships:
-        reverse__localgov_elections_contest__field_candidates:
-          id: reverse__localgov_elections_contest__field_candidates
-          table: localgov_elections_candidate
-          field: reverse__localgov_elections_contest__field_candidates
-          relationship: none
-          group_type: group
-          admin_label: field_candidates
-          entity_type: localgov_elections_candidate
-          plugin_id: entity_reverse
-          required: true
         field_party:
           id: field_party
           table: localgov_elections_candidate__field_party
@@ -546,6 +536,16 @@ display:
           admin_label: 'field_party: Taxonomy term'
           plugin_id: standard
           required: false
+        reverse__localgov_elections_contest__field_candidates_1:
+          id: reverse__localgov_elections_contest__field_candidates_1
+          table: localgov_elections_candidate
+          field: reverse__localgov_elections_contest__field_candidates
+          relationship: none
+          group_type: group
+          admin_label: 'By id:  field_candidates'
+          entity_type: localgov_elections_candidate
+          plugin_id: entity_reverse
+          required: true
       header: {  }
       footer: {  }
       display_extenders: {  }
