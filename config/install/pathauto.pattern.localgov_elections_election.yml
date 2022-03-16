@@ -7,7 +7,15 @@ id: localgov_elections_election
 label: Election
 type: 'canonical_entities:node'
 pattern: '/elections/[node:field_election_date:date:custom:M-y]'
-selection_criteria: {  }
+selection_criteria:
+  1a67755d-ada5-4ebe-b8e3-be8a2d04c2dd:
+    id: node_type
+    negate: false
+    uuid: 1a67755d-ada5-4ebe-b8e3-be8a2d04c2dd
+    context_mapping:
+      node: node
+    bundles:
+      localgov_election: localgov_election
 selection_logic: and
 weight: 0
 relationships: {  }

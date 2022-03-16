@@ -509,7 +509,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: linkarea
-          empty: false
+          empty: true
           tokenize: true
           link_text: 'Add Contest'
           path: 'route:entity.localgov_elections_contest.add_form?edit[field_election][widget][0][target_id]={{ arguments.field_election_target_id }}'
@@ -521,7 +521,7 @@ display:
           path_case: none
           alt: ''
           rel: ''
-          link_class: ''
+          link_class: 'button button--action button--primary'
           prefix: ''
           suffix: ''
           target: ''
