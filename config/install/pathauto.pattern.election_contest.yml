@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - localgov_elections
+id: election_contest
+label: 'Election Contest'
+type: 'canonical_entities:localgov_elections_contest'
+pattern: '/elections/[localgov_elections_contest:field_election:target_id]/areas/[localgov_elections_contest:field_electoral_area]'
+selection_criteria: {  }
+selection_logic: and
+weight: 0
+relationships: {  }
