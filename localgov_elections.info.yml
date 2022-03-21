@@ -11,6 +11,7 @@ dependencies:
   - drupal:content_moderation
   - prepopulate:prepopulate
   - views_linkarea:views_linkarea
+  - view_entity_ref_field_formatter:view_entity_ref_field_formatter
 config_devel:
   - core.entity_form_display.localgov_elections_candidate.localgov_elections_candidate.default
   - core.entity_form_display.localgov_elections_contest.localgov_elections_contest.default

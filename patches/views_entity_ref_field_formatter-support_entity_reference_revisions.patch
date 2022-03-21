@@ -1,0 +1,20 @@
+commit 56c1144c5aa99ebbd1d4117d8a43780c5c36bf23
+Author: Graham Cole <graham.cole@webcurl.co.uk>
+Date:   Thu Mar 17 03:29:37 2022 +0000
+
+    Support Entity Reference Revisions fields
+
+diff --git a/src/Plugin/Field/FieldFormatter/ViewsRenderEntityRefFieldFormatter.php b/src/Plugin/Field/FieldFormatter/ViewsRenderEntityRefFieldFormatter.php
+index 644537b..4a4ee93 100644
+--- a/src/Plugin/Field/FieldFormatter/ViewsRenderEntityRefFieldFormatter.php
++++ b/src/Plugin/Field/FieldFormatter/ViewsRenderEntityRefFieldFormatter.php
+@@ -14,7 +14,8 @@ use Drupal\views\Views;
+  *   id = "view_entity_ref_field_formatter",
+  *   label = @Translation("Views render entity ref field formatter"),
+  *   field_types = {
+- *     "entity_reference"
++ *     "entity_reference",
++ *     "entity_reference_revisions"
+  *   }
+  * )
+  */
