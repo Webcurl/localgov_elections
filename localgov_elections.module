@@ -129,3 +129,30 @@ function localgov_elections_form_localgov_elections_contest_edit_form_alter(&$fo
   }
 
 }
+
+
+/**
+ * Implements hook_preprocess_hook
+ * @param $vars
+ */
+function localgov_elections_preprocess_views_view(&$vars) {
+  if ($vars['id'] != 'election_winners' || $vars['display_id'] != 'by_party') {
+    return;
+  }
+
+  // Summary of candidates by party.
+  // e.g. 'This party has 21 candidates standing in 19 wards at this election.'
+
+  $view = $vars['view'];
+
+  $wards = [];
+  foreach ($view->result as $row) {
+    $contest = $row->_relationship_entities['reverse__localgov_elections_contest__field_candidates_1'];
+    $contest_id = $contest->id();
+    if (isset($wards[$contest_id])) $wards[$contest_id]++;else $wards[$contest_id]=1;
+  }
+
+  $vars['header'][]['#markup'] = \Drupal::translation()->formatPlural(count($view->result), 'This party has 1 candidate standing ', 'This party has @count candidates standing ');
+  $vars['header'][]['#markup'] = \Drupal::translation()->formatPlural(count($wards), 'in 1 ward at this election', 'in @count wards at this election.');
+}
+
