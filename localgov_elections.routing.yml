@@ -13,3 +13,15 @@ entity.localgov_elections_contest.settings:
     _title: 'Elections Contest'
   requirements:
     _permission: 'administer elections'
+
+localgov_elections.council_makeup:
+  path: '/elections/{node}/makeup'
+  defaults:
+    _title: 'Political Make-up of Council'
+    _controller: '\Drupal\localgov_elections\Controller\LocalgovElectionsPagesController::build'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      node:
+        type: entity:node
