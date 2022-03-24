@@ -18,7 +18,7 @@ type_settings:
       label: Declared
       weight: 3
       published: true
-      default_revision: false
+      default_revision: true
     draft:
       label: Draft
       weight: 0

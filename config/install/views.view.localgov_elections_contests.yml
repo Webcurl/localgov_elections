@@ -645,6 +645,10 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+      access:
+        type: perm
+        options:
+          perm: 'access content'
       style:
         type: html_list
         options:
@@ -662,6 +666,7 @@ display:
           separator: ''
           hide_empty: false
       defaults:
+        access: false
         style: false
         row: false
         fields: false
