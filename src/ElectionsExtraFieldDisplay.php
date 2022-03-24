@@ -47,6 +47,14 @@ class ElectionsExtraFieldDisplay {
   {
 
     if ($display->getComponent('vote_share_chart')) {
+
+      // Hide vote share before election has begun.
+      $contest_state = $contest->get('moderation_state')->getString();
+
+      if ($contest_state != 'declared') {
+        return;
+      }
+
       $candidate_ids = [];
 
       foreach ($contest->get('field_candidates') as $candidate_item) {
