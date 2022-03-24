@@ -26,12 +26,92 @@ class ElectionsExtraFieldDisplay {
       'weight' => -20,
       'visible' => TRUE,
     ];
+
+
+    $fields['localgov_elections_contest']['localgov_elections_contest']['display']['vote_share_chart'] = [
+      'label' => $this->t('Vote share chart'),
+      'description' => $this->t("Share of teh vote chart"),
+      'weight' => -20,
+      'visible' => TRUE,
+    ];
     return $fields;
   }
 
   public function nodeView(array &$build, NodeInterface $node, EntityViewDisplayInterface $display, $view_mode) {
     if ($display->getComponent('localgov_election_results')) {
       $build['localgov_election_results'] = $this->getViewEmbed($node, 'embed_1');
+    }
+  }
+
+  public function contestView(array &$build, ElectionsContestInterface $contest, EntityViewDisplayInterface $display, $view_mode)
+  {
+
+    if ($display->getComponent('vote_share_chart')) {
+      $candidate_ids = [];
+
+      foreach ($contest->get('field_candidates') as $candidate_item) {
+        $candidate_ids[] = $candidate_item->target_id;
+        $candidate_vids[] = $candidate_item->target_revision_id;
+      }
+
+      $query = \Drupal::entityQueryAggregate('localgov_elections_candidate')
+        ->condition('id', $candidate_ids, 'IN')
+        ->condition('revision_id', $candidate_vids, 'IN');
+
+      $results = $query->groupBy('field_party')
+        ->aggregate('field_votes_won', 'SUM')
+        ->execute();
+
+      $party_terms = \Drupal::entityTypeManager()
+        ->getStorage('taxonomy_term')
+        ->loadMultiple(array_column($results, 'field_party_target_id'));
+
+      $series = [
+        '#type' => 'chart_data',
+        '#title' => $this->t('Votes'),
+        '#data' => [],
+        //'#color' => [], // This currently gets overwritten by global colors in Charts 5.x :-/
+      ];
+
+      $xaxis = [
+        '#type' => 'chart_xaxis',
+        '#title' => $this->t('Party'),
+        '#labels' => [],
+      ];
+
+      $colors = [];
+      foreach ($results as $result) {
+        $party_id = $result['field_party_target_id'];
+        $series['#data'][] = (int) $result['field_votes_won_sum'];
+        $colors[] = !empty($party_terms[$party_id]) ? $party_terms[$party_id]->get('field_color')->color : '#cccccc';
+        $xaxis['#labels'][] = !empty($party_terms[$party_id]) ? $party_terms[$party_id]->label() : 'Independent';
+      }
+
+      $build['vote_share_chart'] = [
+        '#type' => 'chart',
+        '#attached' => [
+          'library' => ['localgov_elections/chartjs_plugin_datalabels']
+        ],
+        '#chart_type' => 'pie',
+        '#title' => $this->t('Share of the vote'),
+        '#data_labels' => TRUE,
+        '#colors' => $colors,
+        '#legend' => TRUE,
+        '#legend_position' => 'top',
+        'series' => $series,
+        'x_axis' => $xaxis,
+        '#raw_options' => [
+          'options' => [
+            'plugins' => [
+              // Change options for ALL labels of THIS CHART
+//              'datalabels' => [
+//                'formatter' => 'Drupal.localgov_elections.percentageLabelFormatter', // Can't do this here, need to pass actual JS function
+//                'color' => '#ff0000'
+//             ]
+            ]
+          ],
+        ]
+      ];
     }
   }
 

@@ -11,6 +11,7 @@ use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\localgov_elections\ElectionsContestInterface;
 use Drupal\localgov_elections\ElectionsExtraFieldDisplay;
 use Drupal\node\NodeInterface;
 
@@ -60,6 +61,11 @@ function localgov_elections_entity_extra_field_info() {
 function localgov_elections_node_view(array &$build, NodeInterface $node, EntityViewDisplayInterface $display, $view_mode) {
   return \Drupal::classResolver(ElectionsExtraFieldDisplay::class)
     ->nodeView($build, $node, $display, $view_mode);
+}
+
+function localgov_elections_localgov_elections_contest_view(array &$build, ElectionsContestInterface $contest, EntityViewDisplayInterface $display, $view_mode) {
+  return \Drupal::classResolver(ElectionsExtraFieldDisplay::class)
+    ->contestView($build, $contest, $display, $view_mode);
 }
 
 
