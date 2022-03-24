@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.storage.localgov_elections_candidate.field_elected
+    - field.storage.localgov_elections_candidate.field_party
     - field.storage.localgov_elections_candidate.field_party_name
     - field.storage.localgov_elections_candidate.field_votes_won
     - field.storage.localgov_elections_contest.field_electoral_area
@@ -86,7 +87,7 @@ display:
             height: '50'
             opacity: false
             data_attribute: false
-          group_column: ''
+          group_column: color
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -159,77 +160,12 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        label:
-          id: label
-          table: localgov_elections_candidate
-          field: label
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: null
-          entity_field: label
-          plugin_id: field
-          label: ''
-          exclude: false
-          alter:
-            alter_text: true
-            text: "{{ label }} <br />\r\n{{ field_party_name }}"
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
         field_votes_won:
           id: field_votes_won
           table: localgov_elections_candidate__field_votes_won
           field: field_votes_won
           relationship: none
-          group_type: group
+          group_type: sum
           admin_label: ''
           plugin_id: field
           label: 'Votes Won'
@@ -579,6 +515,507 @@ display:
         - 'languages:language_interface'
         - url
       tags:
+        - 'config:field.storage.localgov_elections_candidate.field_party_name'
+        - 'config:field.storage.localgov_elections_candidate.field_votes_won'
+        - 'config:field.storage.localgov_elections_contest.field_electoral_area'
+        - 'config:field.storage.taxonomy_term.field_color'
+  by_party:
+    id: by_party
+    display_title: 'By Party'
+    display_plugin: page
+    position: 2
+    display_options:
+      fields:
+        field_color:
+          id: field_color
+          table: taxonomy_term__field_color
+          field: field_color
+          relationship: field_party
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: color
+          type: color_field_formatter_swatch
+          settings:
+            shape: square
+            width: '15'
+            height: '50'
+            opacity: false
+            data_attribute: false
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_party_name:
+          id: field_party_name
+          table: localgov_elections_candidate__field_party_name
+          field: field_party_name
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Party
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        label:
+          id: label
+          table: localgov_elections_candidate
+          field: label
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: null
+          entity_field: label
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: "{{ label }} <br />\r\n{{ field_party_name }}"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_votes_won:
+          id: field_votes_won
+          table: localgov_elections_candidate__field_votes_won
+          field: field_votes_won
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Votes Won'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_electoral_area:
+          id: field_electoral_area
+          table: localgov_elections_contest__field_electoral_area
+          field: field_electoral_area
+          relationship: reverse__localgov_elections_contest__field_candidates_1
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: h3
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_elected:
+          id: field_elected
+          table: localgov_elections_candidate__field_elected
+          field: field_elected
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Elected
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: boolean
+          settings:
+            format: custom
+            format_custom_false: ''
+            format_custom_true: 'Yes'
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+      arguments:
+        field_election_target_id:
+          id: field_election_target_id
+          table: localgov_elections_contest__field_election
+          field: field_election_target_id
+          relationship: reverse__localgov_elections_contest__field_candidates_1
+          group_type: group
+          admin_label: ''
+          plugin_id: numeric
+          default_action: 'not found'
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: true
+          validate:
+            type: 'entity:node'
+            fail: 'not found'
+          validate_options:
+            bundles:
+              localgov_election: localgov_election
+            access: false
+            operation: view
+            multiple: 0
+          break_phrase: false
+          not: false
+        field_short_name_value:
+          id: field_short_name_value
+          table: taxonomy_term__field_short_name
+          field: field_short_name_value
+          relationship: field_party
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          default_action: 'not found'
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: true
+          title: '{{ arguments.field_short_name_value }} '
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          glossary: false
+          limit: 0
+          case: none
+          path_case: none
+          transform_dash: true
+          break_phrase: false
+      filters: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        fields: false
+        arguments: false
+        filters: false
+        filter_groups: false
+        header: false
+      display_description: ''
+      header: {  }
+      display_extenders: {  }
+      path: elections/%/candidates/party/%
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+      tags:
+        - 'config:field.storage.localgov_elections_candidate.field_elected'
         - 'config:field.storage.localgov_elections_candidate.field_party_name'
         - 'config:field.storage.localgov_elections_candidate.field_votes_won'
         - 'config:field.storage.localgov_elections_contest.field_electoral_area'
@@ -1085,6 +1522,19 @@ display:
           separator: ', '
           field_api_classes: false
       sorts:
+        field_surname_value:
+          id: field_surname_value
+          table: localgov_elections_candidate__field_surname
+          field: field_surname_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
         field_electoral_area_target_id:
           id: field_electoral_area_target_id
           table: localgov_elections_contest__field_electoral_area
@@ -1110,19 +1560,6 @@ display:
           expose:
             label: ''
             field_identifier: field_votes_won_value
-          exposed: false
-        field_surname_value:
-          id: field_surname_value
-          table: localgov_elections_candidate__field_surname
-          field: field_surname_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: standard
-          order: ASC
-          expose:
-            label: ''
-            field_identifier: ''
           exposed: false
       arguments:
         id:
@@ -1191,11 +1628,11 @@ display:
         - 'config:field.storage.localgov_elections_candidate.field_votes_won'
         - 'config:field.storage.localgov_elections_contest.field_electoral_area'
         - 'config:field.storage.taxonomy_term.field_color'
-  page_1:
-    id: page_1
-    display_title: 'By Party'
+  vote_share:
+    id: vote_share
+    display_title: 'Vote share by party'
     display_plugin: page
-    position: 2
+    position: 5
     display_options:
       fields:
         field_color:
@@ -1251,11 +1688,11 @@ display:
           type: color_field_formatter_swatch
           settings:
             shape: square
-            width: '15'
-            height: '50'
+            width: '30'
+            height: '60'
             opacity: false
             data_attribute: false
-          group_column: ''
+          group_column: color
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -1265,16 +1702,16 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        field_party_name:
-          id: field_party_name
-          table: localgov_elections_candidate__field_party_name
-          field: field_party_name
+        field_party:
+          id: field_party
+          table: localgov_elections_candidate__field_party
+          field: field_party
           relationship: none
           group_type: group
           admin_label: ''
           plugin_id: field
           label: Party
-          exclude: true
+          exclude: false
           alter:
             alter_text: false
             text: ''
@@ -1310,80 +1747,15 @@ display:
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
-          empty: ''
+          empty: Others
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: value
-          type: string
+          click_sort_column: target_id
+          type: entity_reference_label
           settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        label:
-          id: label
-          table: localgov_elections_candidate
-          field: label
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: null
-          entity_field: label
-          plugin_id: field
-          label: ''
-          exclude: false
-          alter:
-            alter_text: true
-            text: "{{ label }} <br />\r\n{{ field_party_name }}"
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
+            link: false
+          group_column: target_id
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -1398,7 +1770,7 @@ display:
           table: localgov_elections_candidate__field_votes_won
           field: field_votes_won
           relationship: none
-          group_type: group
+          group_type: sum
           admin_label: ''
           plugin_id: field
           label: 'Votes Won'
@@ -1457,18 +1829,18 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        field_electoral_area:
-          id: field_electoral_area
-          table: localgov_elections_contest__field_electoral_area
-          field: field_electoral_area
-          relationship: reverse__localgov_elections_contest__field_candidates_1
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: field
-          label: ''
+          plugin_id: custom
+          label: '% Share'
           exclude: false
           alter:
-            alter_text: false
+            alter_text: true
             text: ''
             make_link: false
             path: ''
@@ -1494,125 +1866,56 @@ display:
             trim: false
             preserve_tags: ''
             html: false
-          element_type: h3
+          element_type: ''
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: false
+          element_label_colon: true
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
           empty: ''
           hide_empty: false
           empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: false
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-      arguments:
-        field_election_target_id:
-          id: field_election_target_id
-          table: localgov_elections_contest__field_election
-          field: field_election_target_id
-          relationship: reverse__localgov_elections_contest__field_candidates_1
+          hide_alter_empty: false
+      sorts:
+        field_party_target_id:
+          id: field_party_target_id
+          table: localgov_elections_candidate__field_party
+          field: field_party_target_id
+          relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: numeric
-          default_action: 'not found'
-          exception:
-            value: all
-            title_enable: false
-            title: All
-          title_enable: false
-          title: ''
-          default_argument_type: fixed
-          default_argument_options:
-            argument: ''
-          default_argument_skip_url: false
-          summary_options:
-            base_path: ''
-            count: true
-            override: false
-            items_per_page: 25
-          summary:
-            sort_order: asc
-            number_of_records: 0
-            format: default_summary
-          specify_validation: true
-          validate:
-            type: 'entity:node'
-            fail: 'not found'
-          validate_options:
-            bundles:
-              localgov_election: localgov_election
-            access: false
-            operation: view
-            multiple: 0
-          break_phrase: false
-          not: false
-        field_short_name_value:
-          id: field_short_name_value
-          table: taxonomy_term__field_short_name
-          field: field_short_name_value
-          relationship: field_party
-          group_type: group
-          admin_label: ''
-          plugin_id: string
-          default_action: 'not found'
-          exception:
-            value: all
-            title_enable: false
-            title: All
-          title_enable: true
-          title: '{{ arguments.field_short_name_value }} '
-          default_argument_type: fixed
-          default_argument_options:
-            argument: ''
-          default_argument_skip_url: false
-          summary_options:
-            base_path: ''
-            count: true
-            override: false
-            items_per_page: 25
-          summary:
-            sort_order: asc
-            number_of_records: 0
-            format: default_summary
-          specify_validation: false
-          validate:
-            type: none
-            fail: 'not found'
-          validate_options: {  }
-          glossary: false
-          limit: 0
-          case: none
-          path_case: none
-          transform_dash: true
-          break_phrase: false
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
       filters: {  }
       filter_groups:
         operator: AND
         groups:
           1: AND
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_tags: {  }
       defaults:
+        query: false
+        group_by: false
         fields: false
-        arguments: false
+        sorts: false
         filters: false
         filter_groups: false
+      group_by: true
       display_description: ''
       display_extenders: {  }
-      path: elections/%/candidates/party/%
+      path: elections/%/share
     cache_metadata:
       max-age: -1
       contexts:
@@ -1620,7 +1923,5 @@ display:
         - 'languages:language_interface'
         - url
       tags:
-        - 'config:field.storage.localgov_elections_candidate.field_party_name'
-        - 'config:field.storage.localgov_elections_candidate.field_votes_won'
-        - 'config:field.storage.localgov_elections_contest.field_electoral_area'
+        - 'config:field.storage.localgov_elections_candidate.field_party'
         - 'config:field.storage.taxonomy_term.field_color'

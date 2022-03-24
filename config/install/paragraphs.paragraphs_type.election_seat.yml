@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: election_seat
+label: 'Election Seat'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

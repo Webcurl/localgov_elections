@@ -2,17 +2,17 @@ langcode: en
 status: true
 dependencies:
   module:
-    - localgov_elections
+    - paragraphs
     - taxonomy
-id: localgov_elections_contest.field_previous_seats
-field_name: field_previous_seats
-entity_type: localgov_elections_contest
+id: paragraph.field_party
+field_name: field_party
+entity_type: paragraph
 type: entity_reference
 settings:
   target_type: taxonomy_term
 module: core
 locked: false
-cardinality: -1
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

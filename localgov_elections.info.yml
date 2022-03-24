@@ -9,6 +9,7 @@ dependencies:
   - color_field:color_field
   - inline_entity_form:inline_entity_form
   - drupal:content_moderation
+  - paragraphs:paragraphs
   - prepopulate:prepopulate
   - views_linkarea:views_linkarea
   - view_entity_ref_field_formatter:view_entity_ref_field_formatter
@@ -42,6 +43,8 @@ config_devel:
   - field.field.localgov_elections_contest.localgov_elections_contest.field_seats_total
   - field.field.localgov_elections_contest.localgov_elections_contest.field_turnout
   - field.field.localgov_elections_contest.localgov_elections_contest.field_turnout_percentage
+  - field.field.paragraph.election_seat.field_contested
+  - field.field.paragraph.election_seat.field_party
   - field.field.node.localgov_election.body
   - field.field.node.localgov_election.field_election_date
   - field.field.node.localgov_election.field_previous_election
@@ -63,19 +66,20 @@ config_devel:
   - field.storage.localgov_elections_contest.field_election
   - field.storage.localgov_elections_contest.field_electoral_area
   - field.storage.localgov_elections_contest.field_eligible_electorate
-  - field.storage.localgov_elections_contest.field_previous_seats
+  - field.storage.localgov_elections_contest.field_previous_seat_makeup
   - field.storage.localgov_elections_contest.field_rejected_papers
-  - field.storage.localgov_elections_contest.field_seats_contested
-  - field.storage.localgov_elections_contest.field_seats_total
   - field.storage.localgov_elections_contest.field_turnout
   - field.storage.localgov_elections_contest.field_turnout_percentage
   - field.storage.node.field_election_date
   - field.storage.node.field_previous_election
+  - field.storage.paragraph.field_contested
+  - field.storage.paragraph.field_party
   - field.storage.taxonomy_term.field_abbreviated_name
   - field.storage.taxonomy_term.field_aliases
   - field.storage.taxonomy_term.field_color
   - field.storage.taxonomy_term.field_short_name
   - node.type.localgov_election
+  - paragraphs.paragraphs_type.election_seat
   - pathauto.pattern.election_contest
   - pathauto.pattern.localgov_elections_election
   - taxonomy.vocabulary.localgov_elections_area

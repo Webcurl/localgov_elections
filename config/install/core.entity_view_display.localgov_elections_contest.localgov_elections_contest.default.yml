@@ -6,10 +6,8 @@ dependencies:
     - field.field.localgov_elections_contest.localgov_elections_contest.field_election
     - field.field.localgov_elections_contest.localgov_elections_contest.field_electoral_area
     - field.field.localgov_elections_contest.localgov_elections_contest.field_eligible_electorate
-    - field.field.localgov_elections_contest.localgov_elections_contest.field_previous_seats
+    - field.field.localgov_elections_contest.localgov_elections_contest.field_previous_seat_makeup
     - field.field.localgov_elections_contest.localgov_elections_contest.field_rejected_papers
-    - field.field.localgov_elections_contest.localgov_elections_contest.field_seats_contested
-    - field.field.localgov_elections_contest.localgov_elections_contest.field_seats_total
     - field.field.localgov_elections_contest.localgov_elections_contest.field_turnout
     - field.field.localgov_elections_contest.localgov_elections_contest.field_turnout_percentage
   module:
@@ -43,7 +41,7 @@ content:
         fences_label_classes: ''
       field_formatter_class:
         class: ''
-    weight: 5
+    weight: 4
     region: content
   field_election:
     type: entity_reference_label
@@ -68,7 +66,14 @@ content:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 7
+    weight: 6
+    region: content
+  field_previous_seat_makeup:
+    type: localgov_elections_seats_summary
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
     region: content
   field_rejected_papers:
     type: number_integer
@@ -77,25 +82,7 @@ content:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 10
-    region: content
-  field_seats_contested:
-    type: number_integer
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    weight: 4
-    region: content
-  field_seats_total:
-    type: number_integer
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    weight: 3
+    weight: 9
     region: content
   field_turnout:
     type: number_integer
@@ -104,7 +91,7 @@ content:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 8
+    weight: 7
     region: content
   field_turnout_percentage:
     type: number_decimal
@@ -115,14 +102,13 @@ content:
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 9
+    weight: 8
     region: content
   vote_share_chart:
     settings: {  }
     third_party_settings: {  }
-    weight: 6
+    weight: 5
     region: content
 hidden:
   created: true
-  field_previous_seats: true
   search_api_excerpt: true

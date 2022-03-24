@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contested
+    - paragraphs.paragraphs_type.election_seat
+id: paragraph.election_seat.field_contested
+field_name: field_contested
+entity_type: paragraph
+bundle: election_seat
+label: 'Seat Contested'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean
