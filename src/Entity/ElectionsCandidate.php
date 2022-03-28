@@ -123,10 +123,14 @@ class ElectionsCandidate extends RevisionableContentEntityBase implements Electi
   }
 
   public function updateLabel() {
-    $label = implode(", ", [
-      $this->get('field_surname')->getString(),
-      $this->get('field_forenames')->getString()
-    ]);
+
+    // Use commonly-used surname/forenames whenever available.
+    $surname = $this->get('field_commonly_used_surname')->getString()
+      ?? $this->get('field_surname')->getString();
+    $forenames = $this->get('field_commonly_used_forenames')->getString()
+      ?? $this->get('field_forenames')->getString();
+
+    $label = implode(", ", [$surname, $forenames]);
 
     $this->set('label', $label);
   }
