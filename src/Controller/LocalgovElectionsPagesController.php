@@ -188,7 +188,7 @@ class LocalgovElectionsPagesController extends ControllerBase {
       '#suffix' => '</h2>',
     ];
 
-    $view = Views::getView('election_winners');
+    $view = Views::getView('localgov_elections_candidates');
     $build['candidate_list'] = $view->buildRenderable('by_party', [$node->id(), $party->id()]);
 
     return $build;

@@ -136,7 +136,7 @@ function localgov_elections_form_localgov_elections_contest_edit_form_alter(&$fo
  * @param $vars
  */
 function localgov_elections_preprocess_views_view(&$vars) {
-  if ($vars['id'] != 'election_winners' || $vars['display_id'] != 'by_party') {
+  if ($vars['id'] != 'localgov_elections_candidates' || $vars['display_id'] != 'by_party') {
     return;
   }
 

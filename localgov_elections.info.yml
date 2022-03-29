@@ -37,7 +37,6 @@ config_devel:
   - field.field.localgov_elections_contest.localgov_elections_contest.field_election
   - field.field.localgov_elections_contest.localgov_elections_contest.field_electoral_area
   - field.field.localgov_elections_contest.localgov_elections_contest.field_eligible_electorate
-  - field.field.localgov_elections_contest.localgov_elections_contest.field_previous_seats
   - field.field.localgov_elections_contest.localgov_elections_contest.field_rejected_papers
   - field.field.localgov_elections_contest.localgov_elections_contest.field_seats_contested
   - field.field.localgov_elections_contest.localgov_elections_contest.field_seats_total
@@ -84,6 +83,6 @@ config_devel:
   - pathauto.pattern.localgov_elections_election
   - taxonomy.vocabulary.localgov_elections_area
   - taxonomy.vocabulary.localgov_elections_party
-  - views.view.election_winners
+  - views.view.localgov_elections_candidates
   - views.view.localgov_elections_contests
   - workflows.workflow.localgov_elections_contests

@@ -15,7 +15,7 @@ dependencies:
     - content_moderation
     - localgov_elections
     - taxonomy
-id: election_winners
+id: localgov_elections_candidates
 label: 'Election Candidates'
 module: views
 description: ''
@@ -305,10 +305,25 @@ display:
         type: none
         options: {  }
       cache:
-        type: tag
+        type: none
         options: {  }
       empty: {  }
       sorts:
+        label:
+          id: label
+          table: localgov_elections_candidate
+          field: label
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: localgov_elections_candidate
+          entity_field: label
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
         field_electoral_area_target_id:
           id: field_electoral_area_target_id
           table: localgov_elections_contest__field_electoral_area
@@ -522,9 +537,11 @@ display:
   by_party:
     id: by_party
     display_title: 'By Party'
-    display_plugin: page
+    display_plugin: embed
     position: 2
     display_options:
+      enabled: true
+      title: ''
       fields:
         field_color:
           id: field_color
@@ -954,21 +971,21 @@ display:
             multiple: 0
           break_phrase: false
           not: false
-        field_short_name_value:
-          id: field_short_name_value
-          table: taxonomy_term__field_short_name
-          field: field_short_name_value
-          relationship: field_party
+        field_party_target_id:
+          id: field_party_target_id
+          table: localgov_elections_candidate__field_party
+          field: field_party_target_id
+          relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: string
+          plugin_id: numeric
           default_action: 'not found'
           exception:
             value: all
             title_enable: false
             title: All
-          title_enable: true
-          title: '{{ arguments.field_short_name_value }} '
+          title_enable: false
+          title: ''
           default_argument_type: fixed
           default_argument_options:
             argument: ''
@@ -987,18 +1004,15 @@ display:
             type: none
             fail: 'not found'
           validate_options: {  }
-          glossary: false
-          limit: 0
-          case: none
-          path_case: none
-          transform_dash: true
           break_phrase: false
+          not: false
       filters: {  }
       filter_groups:
         operator: AND
         groups:
           1: AND
       defaults:
+        title: false
         fields: false
         arguments: false
         filters: false
@@ -1007,7 +1021,6 @@ display:
       display_description: ''
       header: {  }
       display_extenders: {  }
-      path: elections/%/candidates/party/%
     cache_metadata:
       max-age: -1
       contexts:

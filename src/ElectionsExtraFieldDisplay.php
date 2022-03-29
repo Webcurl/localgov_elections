@@ -124,13 +124,13 @@ class ElectionsExtraFieldDisplay {
   }
 
   protected function getViewEmbed(NodeInterface $node, string $display_id) {
-    $view = Views::getView('election_winners');
+    $view = Views::getView('localgov_elections_candidates');
     if (!$view || !$view->access($display_id)) {
       return;
     }
     return [
       '#type' => 'view',
-      '#name' => 'election_winners',
+      '#name' => 'localgov_elections_candidates',
       '#display_id' => $display_id,
       '#arguments' => [$node->id()]
     ];

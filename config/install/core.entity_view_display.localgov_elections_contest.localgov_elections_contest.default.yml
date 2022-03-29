@@ -29,7 +29,7 @@ content:
     type: view_entity_ref_field_formatter
     label: visually_hidden
     settings:
-      view_id: election_winners
+      view_id: localgov_elections_candidates
       display_id: embed_2
     third_party_settings:
       fences:
