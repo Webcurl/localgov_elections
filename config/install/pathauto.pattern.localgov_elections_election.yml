@@ -6,12 +6,12 @@ dependencies:
 id: localgov_elections_election
 label: Election
 type: 'canonical_entities:node'
-pattern: '/elections/[node:field_election_date:date:custom:M-y]'
+pattern: '/elections/[node:nid]'
 selection_criteria:
-  1a67755d-ada5-4ebe-b8e3-be8a2d04c2dd:
+  4d0c9775-8f91-4ee4-8b48-42db7f9d71ee:
     id: node_type
     negate: false
-    uuid: 1a67755d-ada5-4ebe-b8e3-be8a2d04c2dd
+    uuid: 4d0c9775-8f91-4ee4-8b48-42db7f9d71ee
     context_mapping:
       node: node
     bundles:

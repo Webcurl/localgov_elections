@@ -39,11 +39,14 @@ content:
     weight: 5
     region: content
   field_color:
-    type: color_field_formatter_text
-    label: above
+    type: color_field_formatter_swatch
+    label: hidden
     settings:
-      format: hex
+      shape: square
+      width: '50'
+      height: '50'
       opacity: true
+      data_attribute: false
     third_party_settings: {  }
     weight: 4
     region: content
