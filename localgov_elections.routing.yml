@@ -25,3 +25,17 @@ localgov_elections.council_makeup:
     parameters:
       node:
         type: entity:node
+
+localgov_elections.candidate_by_party:
+  path: '/elections/{node}/candidates/party/{party}'
+  defaults:
+    _title_callback: '\Drupal\localgov_elections\Controller\LocalgovElectionsPagesController::embedCandidatesByPartyTitle'
+    _controller: '\Drupal\localgov_elections\Controller\LocalgovElectionsPagesController::embedCandidatesByParty'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      node:
+        type: entity:node
+      party:
+        type: localgov_elections_party_short_name

@@ -4,6 +4,8 @@ namespace Drupal\localgov_elections\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\node\NodeInterface;
+use Drupal\taxonomy\TermInterface;
+use Drupal\views\Views;
 
 /**
  * Returns responses for Localgov Elections routes.
@@ -169,6 +171,38 @@ class LocalgovElectionsPagesController extends ControllerBase {
     ];
 
     return $build;
+  }
+
+
+  /**
+   * Page callback to display list of candidates for a given party.
+   * @param NodeInterface $node
+   * @param TermInterface $party
+   * @return array
+   */
+  public function embedCandidatesByParty(NodeInterface $node, TermInterface $party) {
+
+    $build['title'] = [
+      '#prefix' => '<h2>',
+      '#markup' =>$this->t('@party candidates', ['@party' => $party->label()]),
+      '#suffix' => '</h2>',
+    ];
+
+    $view = Views::getView('election_winners');
+    $build['candidate_list'] = $view->buildRenderable('by_party', [$node->id(), $party->id()]);
+
+    return $build;
+
+  }
+
+  /**
+   * Title callback.
+   * @param NodeInterface $node
+   * @param TermInterface $party
+   * @return \Drupal\Core\StringTranslation\TranslatableMarkup|string|null
+   */
+  public function embedCandidatesByPartyTitle(NodeInterface $node, TermInterface $party) {
+    return $node->label() . ' - ' . $party->label();
   }
 
 }

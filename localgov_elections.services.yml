@@ -7,3 +7,8 @@ services:
     class: Drupal\localgov_elections\EventSubscriber\ElectionsRouteAlterSubscriber
     tags:
       - { name: event_subscriber }
+  localgov_elections.party_shortname_param_converter:
+    class: Drupal\localgov_elections\PartyShortNameParamConverter
+    arguments: ['@entity_type.manager']
+    tags:
+      - { name: paramconverter }
