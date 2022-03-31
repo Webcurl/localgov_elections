@@ -91,7 +91,7 @@ class ElectionsExtraFieldDisplay {
       foreach ($results as $result) {
         $party_id = $result['field_party_target_id'];
         $series['#data'][] = (int) $result['field_votes_won_sum'];
-        $colors[] = !empty($party_terms[$party_id]) ? $party_terms[$party_id]->get('field_color')->color : '#cccccc';
+        $series['#color'][] = !empty($party_terms[$party_id]) ? $party_terms[$party_id]->get('field_color')->color : '#cccccc';
         $xaxis['#labels'][] = !empty($party_terms[$party_id]) ? $party_terms[$party_id]->label() : 'Independent';
       }
 
@@ -100,7 +100,7 @@ class ElectionsExtraFieldDisplay {
         '#attached' => [
           'library' => ['localgov_elections/chartjs_plugin_datalabels']
         ],
-        '#chart_type' => 'pie',
+        '#chart_type' => 'donut',
         '#title' => $this->t('Share of the vote'),
         '#data_labels' => TRUE,
         '#colors' => $colors,
@@ -110,6 +110,8 @@ class ElectionsExtraFieldDisplay {
         'x_axis' => $xaxis,
         '#raw_options' => [
           'options' => [
+            'rotation' => -90,
+            'circumference' => 180,
             'plugins' => [
               // Change options for ALL labels of THIS CHART
 //              'datalabels' => [

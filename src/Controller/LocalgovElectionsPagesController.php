@@ -160,7 +160,7 @@ class LocalgovElectionsPagesController extends ControllerBase {
 
     $build['makeup_chart'] = [
       '#type' => 'chart',
-      '#chart_type' => 'pie',
+      '#chart_type' => 'donut',
       '#title' => $this->t('Council Make-up'),
       '#data_labels' => TRUE,
       //'#colors' => array_column($council_makeup, 'color'),
@@ -168,6 +168,12 @@ class LocalgovElectionsPagesController extends ControllerBase {
       '#legend_position' => 'top',
       'series' => $series,
       'x_axis' => $xaxis,
+      '#raw_options' => [
+        'options' => [
+          'rotation' => -90,
+          'circumference' => 180,
+        ]
+      ]
     ];
 
     return $build;
