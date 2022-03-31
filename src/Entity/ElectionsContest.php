@@ -118,7 +118,10 @@ class ElectionsContest extends RevisionableContentEntityBase implements Election
 
     $label = 'Unknown Area';
     if (!$this->get('field_electoral_area')->isEmpty()) {
-      $label = $this->get('field_electoral_area')->entity->label();
+      $area = $this->get('field_electoral_area')->entity;
+      if ($area) {
+        $label = $this->get('field_electoral_area')->entity->label();
+      }
     }
 
     $this->set('label', $label);
