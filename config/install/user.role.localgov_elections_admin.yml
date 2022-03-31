@@ -1,0 +1,43 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.localgov_election
+    - taxonomy.vocabulary.localgov_elections_area
+    - taxonomy.vocabulary.localgov_elections_party
+    - workflows.workflow.localgov_elections_contests
+  module:
+    - content_moderation
+    - localgov_elections
+    - node
+    - system
+    - taxonomy
+    - toolbar
+id: localgov_elections_admin
+label: 'Elections Admin'
+weight: 15
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'access content overview'
+  - 'access elections candidate overview'
+  - 'access elections contest overview'
+  - 'access taxonomy overview'
+  - 'access toolbar'
+  - 'administer elections'
+  - 'create localgov_election content'
+  - 'create terms in localgov_elections_area'
+  - 'create terms in localgov_elections_party'
+  - 'delete any localgov_election content'
+  - 'edit any localgov_election content'
+  - 'edit own localgov_election content'
+  - 'edit terms in localgov_elections_area'
+  - 'edit terms in localgov_elections_party'
+  - 'use localgov_elections_contests transition create_new_draft'
+  - 'use localgov_elections_contests transition declare_result'
+  - 'use localgov_elections_contests transition publish'
+  - 'view elections candidate'
+  - 'view elections contest'
+  - 'view localgov_election revisions'
+  - 'view own unpublished content'
+  - 'view the administration theme'
