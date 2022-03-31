@@ -82,6 +82,7 @@ config_devel:
   - pathauto.pattern.localgov_elections_election
   - taxonomy.vocabulary.localgov_elections_area
   - taxonomy.vocabulary.localgov_elections_party
+  - user.role.localgov_elections_admin
   - views.view.localgov_elections_candidates
   - views.view.localgov_elections_contests
   - workflows.workflow.localgov_elections_contests
