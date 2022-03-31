@@ -22,14 +22,14 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 101
+    weight: 3
     region: content
   field_election_date:
-    type: datetime_default
+    type: datetime_custom
     label: hidden
     settings:
       timezone_override: ''
-      format_type: date_without_ordinals
+      date_format: 'jS F Y'
     third_party_settings:
       fences:
         fences_field_tag: div
@@ -40,26 +40,19 @@ content:
         fences_label_classes: ''
       field_formatter_class:
         class: ''
-    weight: 102
-    region: content
-  field_previous_election:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 103
+    weight: 0
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 2
     region: content
   localgov_election_results:
     settings: {  }
     third_party_settings: {  }
-    weight: -20
+    weight: 1
     region: content
 hidden:
+  field_previous_election: true
   langcode: true
   search_api_excerpt: true
