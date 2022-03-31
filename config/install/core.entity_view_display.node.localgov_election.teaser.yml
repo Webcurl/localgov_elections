@@ -29,9 +29,9 @@ content:
     weight: 100
     region: content
   localgov_election_results:
-    weight: -20
     settings: {  }
     third_party_settings: {  }
+    weight: -20
     region: content
 hidden:
   field_election_date: true

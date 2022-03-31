@@ -37,9 +37,8 @@ config_devel:
   - field.field.localgov_elections_contest.localgov_elections_contest.field_election
   - field.field.localgov_elections_contest.localgov_elections_contest.field_electoral_area
   - field.field.localgov_elections_contest.localgov_elections_contest.field_eligible_electorate
+  - field.field.localgov_elections_contest.localgov_elections_contest.field_previous_seat_makeup
   - field.field.localgov_elections_contest.localgov_elections_contest.field_rejected_papers
-  - field.field.localgov_elections_contest.localgov_elections_contest.field_seats_contested
-  - field.field.localgov_elections_contest.localgov_elections_contest.field_seats_total
   - field.field.localgov_elections_contest.localgov_elections_contest.field_turnout
   - field.field.localgov_elections_contest.localgov_elections_contest.field_turnout_percentage
   - field.field.paragraph.election_seat.field_contested
