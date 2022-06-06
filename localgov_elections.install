@@ -1,0 +1,19 @@
+<?php
+
+use Drupal\user\RoleInterface;
+
+/**
+ * Implements hook_install().
+ */
+function localgov_elections_install() {
+
+  if (\Drupal::moduleHandler()->moduleExists('user')) {
+    $permissions = [
+      'view elections contest',
+      'view elections candidate'
+    ];
+    user_role_grant_permissions(RoleInterface::ANONYMOUS_ID, $permissions);
+    user_role_grant_permissions(RoleInterface::AUTHENTICATED_ID, $permissions);
+  }
+
+}
