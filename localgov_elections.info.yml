@@ -85,4 +85,5 @@ config_devel:
   - user.role.localgov_elections_admin
   - views.view.localgov_elections_candidates
   - views.view.localgov_elections_contests
+  - views.view.localgov_elections_parties
   - workflows.workflow.localgov_elections_contests
