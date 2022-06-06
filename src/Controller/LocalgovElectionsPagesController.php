@@ -211,4 +211,132 @@ class LocalgovElectionsPagesController extends ControllerBase {
     return $node->label() . ' - ' . $party->label();
   }
 
+
+  public function voteShare(NodeInterface $node)
+  {
+
+    $contest_ids = \Drupal::entityQuery('localgov_elections_contest')
+      ->condition('field_election', $node->id())
+      ->execute();
+
+    $contests = \Drupal::entityTypeManager()
+      ->getStorage('localgov_elections_contest')
+      ->loadMultiple($contest_ids);
+
+
+    $total_turnout = 0;
+    $contests_declared = 0;
+    $candidate_ids = [];
+    $candidate_vids = [];
+
+    foreach ($contests as $contest) {
+
+      $contest_state = $contest->get('moderation_state')->getString();
+
+      if ($contest_state == 'declared') {
+        $candidate_ids = array_merge($candidate_ids, array_column($contest->field_candidates->getValue(), 'target_id'));
+        $candidate_vids = array_merge($candidate_vids, array_column($contest->field_candidates->getValue(), 'target_revision_id'));
+        $contests_declared++;
+        $total_turnout += $contest->get('field_turnout')->value;
+      }
+    }
+
+    $table_rows = [];
+    $party_votes_set = [];
+    if (!empty($candidate_ids)) {
+      $party_votes_set = \Drupal::entityQueryAggregate('localgov_elections_candidate')
+        ->condition('id', $candidate_ids, 'IN')
+        ->condition('id', $candidate_vids, 'IN')
+        ->groupBy('field_party')
+        ->aggregate('field_votes_won', 'SUM')
+        ->execute();
+
+      $party_terms = \Drupal::entityTypeManager()
+        ->getStorage('taxonomy_term')
+        ->loadMultiple(array_column($party_votes_set, 'field_party_target_id'));
+
+      // append percentage
+      foreach  ($party_votes_set as $party) {
+
+        $party_tid = $party['field_party_target_id'];
+        $party_term = $party_terms[$party_tid] ?? NULL;
+          $table_rows[] = [
+            'color' => $party_term ? ['data' => $party_term->get('field_color')->view(['type' => 'color_field_formatter_swatch', 'label' => 'hidden'])] : '',
+            'party' => $party_term ? $party_term->label() : 'Other',
+            'votes' => number_format($party['field_votes_won_sum']),
+            'percent' => number_format(($party['field_votes_won_sum'] / $total_turnout) * 100, 2),
+          ];
+      }
+    }
+
+    $build['status'] = [
+      '#markup' => "<p>After " . $contests_declared . " of " . count($contests) . " wards declared.</p>",
+    ];
+
+    $build['content'] = [
+      '#type' => 'table',
+      '#header' => [
+        ['data' => $this->t('Party'), 'colspan' => 2],
+        'Votes Won',
+        '% Share'
+      ],
+      '#rows' => $table_rows,
+    ];
+
+
+    // Generate chart.
+
+    $chart_data = array_map(function ($party_votes) use ($party_terms) {
+      $party_tid = $party_votes['field_party_target_id'];
+      $party_term = $party_terms[$party_tid] ?? NULL;
+      return array(
+        'color' => $party_term ? $party_term->get('field_color')->color : '#ccc',
+        'party' => $party_term ? $party_term->label() : "Others",
+        'votes' => $party_votes['field_votes_won_sum'],
+      );
+    }, $party_votes_set);
+
+    //if ($contested_seats_count > 0) {
+    //  $chart_data[] = [
+    //    'color' => '#ccc',
+    //    'party' => $this->t('Undeclared')->render(),
+    //    'seats' => $contested_seats_count,
+    //  ];
+    //}
+
+    $series = [
+      '#type' => 'chart_data',
+      '#title' => $this->t('Votes'),
+      '#data' => array_column($chart_data, 'votes'),
+      '#color' => array_column($chart_data, 'color'), // This gets overwritten by global colors in Charts 5.x-dev :-/
+    ];
+
+    $xaxis = [
+      '#type' => 'chart_xaxis',
+      '#title' => $this->t('Party'),
+      '#labels' => array_column($chart_data, 'party'),
+    ];
+
+    $build['makeup_chart'] = [
+      '#type' => 'chart',
+      '#chart_type' => 'gauge',
+      '#title' => $this->t('Share of the vote'),
+      '#data_labels' => TRUE,
+      //'#colors' => array_column($council_makeup, 'color'),
+      '#legend' => TRUE,
+      '#legend_position' => 'top',
+      'series' => $series,
+      'x_axis' => $xaxis,
+      '#raw_options' => [
+       // 'options' => [
+       //   //'rotation' => -90,
+       //   //'circumference' => 180,
+       // ]
+      ]
+    ];
+
+
+    return $build;
+  }
+
 }
