@@ -72,7 +72,7 @@ class ElectionsCandidateImport extends FormBase {
 
   public function validateForm(array &$form, FormStateInterface $form_state) {
 
-    $validators = ['file_validate_extensions' => ['xls', 'xlsx']];
+    $validators = ['file_validate_extensions' => ['xls xlsx']];
     $file = file_save_upload('source_file', $validators, FALSE, 0, FileSystemInterface::EXISTS_REPLACE);
 
     if (isset($file)) {
