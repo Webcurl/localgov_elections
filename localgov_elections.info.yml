@@ -22,6 +22,7 @@ config_devel:
   - core.entity_view_display.localgov_elections_contest.localgov_elections_contest.default
   - core.entity_view_display.node.localgov_election.default
   - core.entity_view_display.node.localgov_election.teaser
+  - core.entity_form_display.paragraph.election_seat.default
   - core.entity_view_display.taxonomy_term.localgov_elections_party.default
   - field.field.localgov_elections_candidate.localgov_elections_candidate.field_commonly_used_forenames
   - field.field.localgov_elections_candidate.localgov_elections_candidate.field_commonly_used_surname
