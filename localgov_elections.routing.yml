@@ -41,7 +41,7 @@ localgov_elections.candidate_by_party:
         type: localgov_elections_party_short_name
 
 localgov_elections.vote_share:
-  path: '/elections/{node}/shares'
+  path: '/elections/{node}/share'
   defaults:
     #_title_callback: '\Drupal\localgov_elections\Controller\LocalgovElectionsPagesController::embedCandidatesByPartyTitle'
     _controller: '\Drupal\localgov_elections\Controller\LocalgovElectionsPagesController::voteShare'
