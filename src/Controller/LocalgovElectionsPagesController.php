@@ -253,7 +253,7 @@ class LocalgovElectionsPagesController extends ControllerBase {
 
       $party_terms = \Drupal::entityTypeManager()
         ->getStorage('taxonomy_term')
-        ->loadMultiple(array_column($party_votes_set, 'field_party_target_id'));
+        ->loadMultiple(array_filter(array_column($party_votes_set, 'field_party_target_id')));
 
       // append percentage
       foreach  ($party_votes_set as $party) {
@@ -286,13 +286,14 @@ class LocalgovElectionsPagesController extends ControllerBase {
 
     // Generate chart.
 
-    $chart_data = array_map(function ($party_votes) use ($party_terms) {
+    $chart_data = array_map(function ($party_votes) use ($party_terms, $total_turnout) {
       $party_tid = $party_votes['field_party_target_id'];
       $party_term = $party_terms[$party_tid] ?? NULL;
       return array(
         'color' => $party_term ? $party_term->get('field_color')->color : '#ccc',
         'party' => $party_term ? $party_term->label() : "Others",
         'votes' => $party_votes['field_votes_won_sum'],
+        'percent' => number_format(($party_votes['field_votes_won_sum'] / $total_turnout) * 100, 2),
       );
     }, $party_votes_set);
 
@@ -307,7 +308,8 @@ class LocalgovElectionsPagesController extends ControllerBase {
     $series = [
       '#type' => 'chart_data',
       '#title' => $this->t('Votes'),
-      '#data' => array_column($chart_data, 'votes'),
+      // Charts module currently expects data to be in $data[1] for pie/donut on chartsjs
+      '#data' => array_map(fn($value) => ['stupid', $value],  array_column($chart_data, 'votes')),
       '#color' => array_column($chart_data, 'color'), // This gets overwritten by global colors in Charts 5.x-dev :-/
     ];
 
@@ -317,21 +319,22 @@ class LocalgovElectionsPagesController extends ControllerBase {
       '#labels' => array_column($chart_data, 'party'),
     ];
 
-    $build['makeup_chart'] = [
+    $build['vote_share_chart'] = [
       '#type' => 'chart',
-      '#chart_type' => 'gauge',
+      '#chart_type' => 'donut',
       '#title' => $this->t('Share of the vote'),
       '#data_labels' => TRUE,
-      //'#colors' => array_column($council_makeup, 'color'),
+    //  '#colors' => array_column($chart_data, 'color'),
       '#legend' => TRUE,
       '#legend_position' => 'top',
       'series' => $series,
       'x_axis' => $xaxis,
+
       '#raw_options' => [
-       // 'options' => [
-       //   //'rotation' => -90,
-       //   //'circumference' => 180,
-       // ]
+       'options' => [
+         'rotation' => -90,
+         'circumference' => 180,
+       ]
       ]
     ];
 
