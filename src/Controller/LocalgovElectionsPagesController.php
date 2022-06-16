@@ -214,6 +214,7 @@ class LocalgovElectionsPagesController extends ControllerBase {
 
   public function voteShare(NodeInterface $node)
   {
+    $renderer = \Drupal::service('renderer');
 
     $contest_ids = \Drupal::entityQuery('localgov_elections_contest')
       ->condition('field_election', $node->id())
@@ -283,6 +284,15 @@ class LocalgovElectionsPagesController extends ControllerBase {
       '#rows' => $table_rows,
     ];
 
+    // Add contest cache tags.
+    foreach ($contests as $contest) {
+      $renderer->addCacheableDependency($build, $contest);
+    }
+
+    // Add contest cache tags.
+    foreach ($party_terms as $party) {
+      $renderer->addCacheableDependency($build, $party);
+    }
 
     // Generate chart.
 
