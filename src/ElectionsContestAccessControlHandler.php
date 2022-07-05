@@ -19,9 +19,14 @@ class ElectionsContestAccessControlHandler extends EntityAccessControlHandler {
    */
   protected function checkAccess(EntityInterface $entity, $operation, AccountInterface $account) {
 
+
+    $contest_state = $entity->get('moderation_state')->getString();
+
     switch ($operation) {
       case 'view':
-        return AccessResult::allowedIfHasPermission($account, 'view elections contest');
+        return AccessResult::allowedIf($contest_state != "draft")
+          ->andIf(AccessResult::allowedIfHasPermission($account, 'view elections contest'))
+          ->orIf(AccessResult::allowedIfHasPermission($account, 'administer elections'));
 
       case 'update':
         return AccessResult::allowedIfHasPermissions($account, ['edit elections contest', 'administer elections'], 'OR');
