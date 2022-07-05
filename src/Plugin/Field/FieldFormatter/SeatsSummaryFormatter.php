@@ -36,7 +36,7 @@ class SeatsSummaryFormatter extends FormatterBase {
         }
     }
 
-    $element[0]['total_seats']['#markup'] = $this->formatPlural($total_seats, 'This ward has 1 seat', 'This ward has @count seats. ');
+    $element[0]['total_seats']['#markup'] = $this->formatPlural($total_seats, 'This ward has 1 seat. ', 'This ward has @count seats. ');
     $element[0]['contested_seats']['#markup'] = $this->formatPlural($contested_seats, '1 seat was up for election.', '@count seats were up for election.');
 
     return $element;
