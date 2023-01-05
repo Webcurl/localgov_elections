@@ -162,7 +162,7 @@ class LocalgovElectionsPagesController extends ControllerBase {
 
     $build['makeup_chart'] = [
       '#type' => 'chart',
-      '#chart_type' => 'donut',
+      '#chart_type' => 'pie',
       '#title' => $this->t('Council Make-up'),
       '#data_labels' => TRUE,
       //'#colors' => array_column($council_makeup, 'color'),
@@ -172,8 +172,8 @@ class LocalgovElectionsPagesController extends ControllerBase {
       'x_axis' => $xaxis,
       '#raw_options' => [
         'options' => [
-          'rotation' => -90,
-          'circumference' => 180,
+          'rotation' => 0,
+          'circumference' => 360,
         ]
       ]
     ];
@@ -343,7 +343,7 @@ class LocalgovElectionsPagesController extends ControllerBase {
 
     $build['vote_share_chart'] = [
       '#type' => 'chart',
-      '#chart_type' => 'donut',
+      '#chart_type' => 'pie',
       '#title' => $this->t('Share of the vote'),
       '#data_labels' => TRUE,
     //  '#colors' => array_column($chart_data, 'color'),
@@ -354,8 +354,8 @@ class LocalgovElectionsPagesController extends ControllerBase {
 
       '#raw_options' => [
        'options' => [
-         'rotation' => -90,
-         'circumference' => 180,
+         'rotation' => 0,
+         'circumference' => 360,
        ]
       ]
     ];

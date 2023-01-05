@@ -100,7 +100,7 @@ class ElectionsExtraFieldDisplay {
         '#attached' => [
           'library' => ['localgov_elections/chartjs_plugin_datalabels']
         ],
-        '#chart_type' => 'donut',
+        '#chart_type' => 'pie',
         '#title' => $this->t('Share of the vote'),
         '#data_labels' => TRUE,
         '#colors' => $colors,
@@ -110,8 +110,8 @@ class ElectionsExtraFieldDisplay {
         'x_axis' => $xaxis,
         '#raw_options' => [
           'options' => [
-            'rotation' => -90,
-            'circumference' => 180,
+            'rotation' => 0,
+            'circumference' => 360,
             'plugins' => [
               // Change options for ALL labels of THIS CHART
 //              'datalabels' => [
