@@ -124,7 +124,7 @@ class LocalgovElectionsPagesController extends ControllerBase {
 
     $build['council_control'] = [
       '#type' => 'text',
-      '#markup' => "<div class='council-control-label'>" . $node->field_council_control->value . "</div"
+      '#markup' => "<div class='council-control-label'>" . $node->field_council_control->value . "</div>"
     ];
 
     $build['content'] = [
