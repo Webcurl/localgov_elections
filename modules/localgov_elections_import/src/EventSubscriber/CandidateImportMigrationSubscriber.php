@@ -6,10 +6,6 @@ use Drupal\localgov_elections\Entity\ElectionsCandidate;
 use Drupal\localgov_elections\Entity\ElectionsContest;
 use Drupal\migrate\Event\MigrateEvents;
 use Drupal\migrate\Event\MigratePostRowSaveEvent;
-use Drupal\migrate\Event\MigratePreRowSaveEvent;
-use Drupal\migrate\Plugin\migrate\process\Concat;
-use Drupal\migrate_plus\Event\MigrateEvents as MigratePlusEvents;
-use Drupal\migrate_plus\Event\MigratePrepareRowEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -22,27 +18,7 @@ class CandidateImportMigrationSubscriber implements EventSubscriberInterface {
    */
   public static function getSubscribedEvents() {
     $events[MigrateEvents::POST_ROW_SAVE][] = ['onPostRowSave'];
-    $events[MigratePlusEvents::PREPARE_ROW][] = ['onPrepareRow'];
     return $events;
-  }
-
-  public function onPrepareRow(MigratePrepareRowEvent $event){
-    // set a new source property, reference that source 
-
-    // migration object
-    $migration = $event->getMigration();
-
-    // make sure it's elections candidate
-    if ($migration->id() != 'elections_candidate_xpress'){
-      return;
-    }
-
-    // Get row / candidate
-    $row = $event->getRow();
-    $election_id = $migration->getSourceConfiguration()['election_node'];
-
-    // create source property to tell the importer where to add/insert the row (make it relative to election id?)
-    $row->setSourceProperty("Row no.", (int)($election_id . $row->getSourceProperty("Row no.")));
   }
 
   public function onPostRowSave(MigratePostRowSaveEvent $event) {
