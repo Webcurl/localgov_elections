@@ -2,8 +2,7 @@ name: Localgov Elections
 type: module
 description: 'Display elections candidates and results'
 package: Custom
-core: 8.x
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9 || ^10
 configure: entity.localgov_elections_candidate.settings
 dependencies:
   - color_field:color_field
