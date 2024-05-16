@@ -63,6 +63,7 @@ class ElectionsExtraFieldDisplay {
       }
 
       $query = \Drupal::entityQueryAggregate('localgov_elections_candidate')
+        ->accessCheck(TRUE)
         ->condition('id', $candidate_ids, 'IN')
         ->condition('revision_id', $candidate_vids, 'IN');
 

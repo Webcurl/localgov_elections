@@ -50,7 +50,7 @@ class PartyShortNameParamConverter implements ParamConverterInterface {
   public function convert($value, $definition, $name, array $defaults) {
     // Return NULL if record not found to trigger 404 HTTP error.
     $query = $this->entityTypeManager->getStorage('taxonomy_term')->getQuery();
-
+    $query->accessCheck(TRUE);
     $tids = $query->condition('field_short_name', $value)->execute();
 
     if ($tids) {

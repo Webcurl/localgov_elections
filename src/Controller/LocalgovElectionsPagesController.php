@@ -20,6 +20,7 @@ class LocalgovElectionsPagesController extends ControllerBase {
     $renderer = \Drupal::service('renderer');
 
     $contest_ids = \Drupal::entityQuery('localgov_elections_contest')
+      ->accessCheck(TRUE)
       ->condition('field_election', $node->id())
       ->execute();
 
@@ -59,6 +60,7 @@ class LocalgovElectionsPagesController extends ControllerBase {
     $elected_candidates = [];
     if (!empty($candidate_ids)) {
       $elected_candidates = \Drupal::entityQueryAggregate('localgov_elections_candidate')
+        ->accessCheck(TRUE)
         ->condition('field_elected', TRUE)
         ->condition('id', $candidate_ids, 'IN')
         ->condition('id', $candidate_vids, 'IN')
@@ -70,6 +72,7 @@ class LocalgovElectionsPagesController extends ControllerBase {
     $declared_existing_seats = [];
     if (!empty($seat_ids)) {
       $declared_existing_seats = \Drupal::entityQueryAggregate('paragraph')
+        ->accessCheck(TRUE)
         ->condition('field_contested', FALSE)
         ->condition('id', $seat_ids, 'IN')
         ->condition('revision_id', $seat_vids, 'IN')
@@ -81,6 +84,7 @@ class LocalgovElectionsPagesController extends ControllerBase {
     $contested_seats_count = 0;
     if (!empty($undeclared_contest_seat_ids)) {
       $contested_seats_result = \Drupal::entityQueryAggregate('paragraph')
+        ->accessCheck(TRUE)
         ->condition('field_contested', TRUE)
         ->condition('id', $undeclared_contest_seat_ids, 'IN')
         ->condition('revision_id', $undeclared_contest_seat_vids, 'IN')
@@ -234,6 +238,7 @@ class LocalgovElectionsPagesController extends ControllerBase {
     $renderer = \Drupal::service('renderer');
 
     $contest_ids = \Drupal::entityQuery('localgov_elections_contest')
+      ->accessCheck(TRUE)
       ->condition('field_election', $node->id())
       ->execute();
 
@@ -263,6 +268,7 @@ class LocalgovElectionsPagesController extends ControllerBase {
     $party_votes_set = [];
     if (!empty($candidate_ids)) {
       $party_votes_set = \Drupal::entityQueryAggregate('localgov_elections_candidate')
+        ->accessCheck(TRUE)
         ->condition('id', $candidate_ids, 'IN')
         ->condition('id', $candidate_vids, 'IN')
         ->groupBy('field_party')
