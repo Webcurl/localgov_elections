@@ -357,7 +357,7 @@ class LocalgovElectionsPagesController extends ControllerBase {
       '#chart_type' => 'pie',
       '#title' => $this->t('Share of the vote'),
       '#data_labels' => TRUE,
-    //  '#colors' => array_column($chart_data, 'color'),
+      '#colors' => array_column($chart_data, 'color'),
       '#legend' => TRUE,
       '#legend_position' => 'top',
       'series' => $series,
